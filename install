@@ -1,0 +1,11 @@
+#!/bin/bash
+
+args="$@"
+root="$(dirname $(readlink -f $0))"
+curr="$(pwd)"
+
+cd $root
+git submodule update --init --recursive
+sudo -H pip install -r requirements.txt
+cd $curr
+python $root/dotinstall/dotinstall.py $args 
