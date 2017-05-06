@@ -5,6 +5,9 @@ class Logger(object):
     def log(self, level, message):
         sys.stdout.write('{}{}{}'.format(level, message, Level.END))
 
+    def normal(self, message):
+        self.log(Level.NORMAL, message);
+
     def error(self, message):
         self.log(Level.ERROR, message)
 

@@ -6,4 +6,5 @@ class Level(object):
     WARNING = Format.YELLOW
     SUCCESS = Format.GREEN
     INFO = Format.BLUE
-    END = '\033[0m'
+    END = Format.RESET
+    NORMAL = ""

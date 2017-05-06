@@ -8,6 +8,8 @@ import shlex
 
 from logger import Logger
 
+out = Logger()
+
 def readOptions () :
     parser = argparse.ArgumentParser(description="Installation script for dotfiles.")
     parser.add_argument("-s", "--src", dest="src", metavar="dir",
@@ -29,6 +31,31 @@ def parseOptions () :
 
     return (src, conf, update, prompt)
 
+def streamToString (stream):
+    ret = ""
+    if stream != None:
+        for line in stream:
+            ret += line
+    return ret
+
+def processPipe (pipe):
+    stdoutOutput = ""
+    stderrOutput = ""
+
+    stdoutOutput = streamToString(pipe.stdout)
+    stderrOutput = streamToString(pipe.stderr)
+
+    out.info(stdoutOutput)
+    out.error(stderrOutput)
+
+def installDependency (dependency):
+    pipe = subprocess.Popen(["dpkg-query", "-W", "-f=${Status}", dependency], stdout=subprocess.PIPE, stderr=open(os.devnull, 'wb'))
+    if streamToString(pipe.stdout).strip() == "install ok installed":
+        out.info("{} already installed.\n".format(dependency))
+    elif subprocess.call(["sudo", "apt-get", "install", "-y", dependency], stdout=open(os.devnull, 'wb'), stderr=open(os.devnull, 'wb')) == 0:
+        out.success("{} successfully installed.\n".format(dependency))
+    else:
+        out.error("{} could not be installed.\n".format(dependency))
 
 def expandPath (path) :
     if path == None:
@@ -41,7 +68,6 @@ def expand (token):
     return os.path.expanduser(os.path.expandvars(token))
 
 if __name__ == "__main__":
-    out = Logger()
     args = readOptions()
     src, conf, update, prompt = parseOptions()
 
@@ -54,7 +80,7 @@ if __name__ == "__main__":
             if raw_input().strip().lower() == "n":
                 continue
         else:
-            out.header("\nInstall {} (Y/n)?\n".format(package))
+            out.header("\nInstalling {}\n".format(package))
 
         linkLocations = []
         overwrite = True
@@ -90,12 +116,12 @@ if __name__ == "__main__":
             for script in prelink:
                 subprocess.call([expand(token) for token in shlex.split(script)])
             for dependency in dependencies:
-                subprocess.call(["sudo", "apt-get", "install", dependency])
+                installDependency(dependency)
 
         for linkLocation in linkLocations:
             for pattern, path in linkLocation.iteritems():
                 location = expandPath(path)
-                subprocess.call(["mkdir", "-pv", location])
+                processPipe(subprocess.Popen(["mkdir", "-pv", location], stdout=subprocess.PIPE, stderr=subprocess.PIPE))
                 for filename in glob.iglob(os.path.join(src, package, pattern)):
                     basename = os.path.basename(filename)
                     if basename in symlinkedFiles:
@@ -103,10 +129,10 @@ if __name__ == "__main__":
                     symlinkedFiles.add(basename)
 
                     if overwrite:
-                        subprocess.call(["rm", os.path.join(expandPath(location), basename)], stderr=open(os.devnull, 'wb'))
-                        subprocess.call(["ln", "-sfv", filename, expandPath(location)])
+                        processPipe(subprocess.Popen(["rm", os.path.join(expandPath(location), basename)], stdout=subprocess.PIPE, stderr=open(os.devnull, 'wb')))
+                        processPipe(subprocess.Popen(["ln", "-sfv", filename, expandPath(location)], stdout=subprocess.PIPE, stderr=subprocess.PIPE))
                     else:
-                        subprocess.call(["ln", "-sv", filename, expandPath(location)])
+                        processPipe(subprocess.Popen(["ln", "-sv", filename, expandPath(location)], stdout=subprocess.PIPE, stderr=subprocess.PIPE))
 
         if not update:
             for script in postlink:

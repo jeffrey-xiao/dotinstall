@@ -3,9 +3,9 @@ import subprocess
 def getOutput (cmd):
     ret = ""
     try:
-	ret = subprocess.check_output(cmd.split())
+        ret = subprocess.check_output(cmd.split())
     except subprocess.CalledProcessError as e:
-	pass
+        pass
     return ret
 class Format(object):
     BOLD = getOutput("tput bold")
