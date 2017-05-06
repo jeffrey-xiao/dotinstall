@@ -22,7 +22,7 @@ def readOptions () :
     return parser.parse_args()
 
 def parseOptions () :
-    src = expandPath(args.src) or os.path.dirname(os.path.realpath(__file__))
+    src = expandPath(args.src) or os.path.dirname(os.path.realpath(os.join(__file__, "..", "..")))
     conf = expandPath(args.conf) or os.path.join(src, "config.yaml")
     update = args.update
     prompt = args.prompt
