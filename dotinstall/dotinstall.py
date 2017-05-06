@@ -22,7 +22,7 @@ def readOptions () :
     return parser.parse_args()
 
 def parseOptions () :
-    src = expandPath(args.src) or os.path.dirname(os.path.realpath(os.join(__file__, "..", "..")))
+    src = expandPath(args.src) or os.path.dirname(os.path.realpath(os.path.join(__file__, "..", "..")))
     conf = expandPath(args.conf) or os.path.join(src, "config.yaml")
     update = args.update
     prompt = args.prompt
@@ -50,11 +50,11 @@ if __name__ == "__main__":
 
     for package in packages:
         if prompt:
-            out.header("Install {} (Y/n)? ".format(package))
+            out.header("\nInstall {} (Y/n)? ".format(package))
             if raw_input().strip().lower() == "n":
                 continue
         else:
-            out.header("Install {} (Y/n)? ".format(package))
+            out.header("\nInstall {} (Y/n)?\n".format(package))
 
         linkLocations = []
         overwrite = True
@@ -64,7 +64,8 @@ if __name__ == "__main__":
         symlinkedFiles = set()
 
         if not 'link' in packages[package]:
-            raise ValueError('No link attribute set.')
+            out.error("No link attribute set.\n")
+            exit(1)
         elif isinstance(packages[package]['link'], list):
             linkLocations = packages[package]['link']
         else:
