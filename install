@@ -4,7 +4,6 @@ args="$@"
 root="$(dirname $(readlink -f $0))"
 curr="$(pwd)"
 
-git submodule update --init --recursive
 cd $root
 sudo -H pip install -r requirements.txt
 cd $curr
