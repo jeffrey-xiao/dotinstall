@@ -58,7 +58,7 @@ if __name__ == "__main__":
 
         if not update:
             for script in prelink:
-                subprocess.call([expand(token) for token in shlex.split(script)])
+                processPipe(subprocess.Popen([expand(token) for token in shlex.split(script)], stdout=subprocess.PIPE, stderr=subprocess.PIPE))
             for dependency in dependencies:
                 pkgManager.install(dependency)
 
@@ -80,4 +80,4 @@ if __name__ == "__main__":
 
         if not update:
             for script in postlink:
-                subprocess.call([expand(token) for token in shlex.split(script)])
+                processPipe(subprocess.Popen([expand(token) for token in shlex.split(script)], stdout=subprocess.PIPE, stderr=subprocess.PIPE))
