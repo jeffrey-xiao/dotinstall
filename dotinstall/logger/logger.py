@@ -1,8 +1,9 @@
 from level import Level
+import sys
 
 class Logger(object):
     def log(self, level, message):
-        print('{}{}{}'.format(level, message, Level.END))
+        sys.stdout.write('{}{}{}'.format(level, message, Level.END))
 
     def error(self, message):
         self.log(Level.ERROR, message)
