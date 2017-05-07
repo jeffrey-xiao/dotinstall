@@ -1,5 +1,5 @@
-from logger import *
-
+import subprocess
+from logger import Logger
 
 class Installer(object):
     def install(self, dependency):

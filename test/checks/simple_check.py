@@ -17,6 +17,10 @@ class SimpleTest(unittest.TestCase):
     def test_postlink(self):
         self.assertTrue(not os.path.exists("~/other/3.txt"))
 
+    def test_clean(self):
+        self.assertTrue(not os.path.exists("~/test/broken1.txt"))
+        self.assertTrue(not os.path.exists("~/other/broken2.txt"))
+
     @classmethod
     def tearDownClass(cls):
         super(SimpleTest, cls).tearDownClass()

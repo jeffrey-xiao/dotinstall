@@ -2,12 +2,13 @@ import os
 import glob
 import yaml
 
-from logger import *
+from logger import Logger
 from util import *
+from installer import *
 from plugins import *
 
 pkgManager = getSystemInstaller()
-plugins = [Prelink(), Dependency(), Link(), Postlink()]
+plugins = [Prelink(), Dependency(), Link(), Postlink(), Clean()]
 
 if __name__ == "__main__":
     options = parseOptions(readOptions())

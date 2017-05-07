@@ -1,6 +1,7 @@
+import sys
+import os
 from .level import Level
 from util import *
-import sys
 
 
 class Logger(object):

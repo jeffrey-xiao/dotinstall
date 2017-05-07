@@ -34,6 +34,7 @@ def parseData(package, packageName):
     ret = {
         'linkLocations': [],
         'overwrite': True,
+        'clean': True,
         'prelink': [],
         'postlink': [],
         'dependencies': [],
@@ -63,5 +64,8 @@ def parseData(package, packageName):
 
     if 'dependencies' in package:
         ret['dependencies'] = package['dependencies']
+
+    if 'clean' in package:
+        ret['clean'] = package['clean']
 
     return ret
