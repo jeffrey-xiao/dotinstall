@@ -5,4 +5,3 @@ chmod +x ./install
 
 ./install -s ./test/tests/simple
 python ./test/checks/simple_check.py
-
