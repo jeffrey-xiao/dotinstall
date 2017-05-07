@@ -1,7 +1,8 @@
 import argparse
 from path import *
 
-def readOptions() :
+
+def readOptions():
     parser = argparse.ArgumentParser(description="Installation script for dotfiles.")
     parser.add_argument("-s", "--src", dest="src", metavar="dir",
         help="root directory of dotfiles")
@@ -14,7 +15,8 @@ def readOptions() :
 
     return parser.parse_args()
 
-def parseOptions(args) :
+
+def parseOptions(args):
     src = expandPath(args.src) or os.path.dirname(os.path.realpath(os.path.join(__file__, "..", "..", "..")))
     conf = expandPath(args.conf) or os.path.join(src, "config.yaml")
     update = args.update

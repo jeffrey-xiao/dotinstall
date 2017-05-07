@@ -1,5 +1,6 @@
 from format import Format
 
+
 class Level(object):
     HEADER = Format.BOLD
     ERROR = Format.RED

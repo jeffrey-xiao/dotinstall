@@ -1,6 +1,6 @@
-def streamToString (stream):
+def streamToString(stream):
     ret = ""
-    if stream != None:
+    if stream is not None:
         for line in stream:
             ret += line
     return ret

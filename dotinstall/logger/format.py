@@ -1,12 +1,15 @@
 import subprocess
 
-def getOutput (cmd):
+
+def getOutput(cmd):
     ret = ""
     try:
         ret = subprocess.check_output(cmd.split())
     except subprocess.CalledProcessError as e:
         pass
     return ret
+
+
 class Format(object):
     BOLD = getOutput("tput bold")
     RESET = getOutput("tput sgr0")

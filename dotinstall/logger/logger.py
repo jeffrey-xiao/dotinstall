@@ -2,6 +2,7 @@ from level import Level
 from util import *
 import sys
 
+
 class Logger(object):
     def log(self, level, message):
         sys.stdout.write('{}{}{}'.format(level, message, Level.END))
@@ -11,7 +12,7 @@ class Logger(object):
         self.log(Level.ERROR, streamToString(pipe.stderr))
 
     def normal(self, message):
-        self.log(Level.NORMAL, message);
+        self.log(Level.NORMAL, message)
 
     def error(self, message):
         self.log(Level.ERROR, message)

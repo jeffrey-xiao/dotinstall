@@ -33,7 +33,7 @@ if __name__ == "__main__":
         dependencies = []
         symlinkedFiles = set()
 
-        if not 'link' in packages[package]:
+        if 'link' not in packages[package]:
             out.error("No link attribute set.\n")
             exit(1)
         elif isinstance(packages[package]['link'], list):

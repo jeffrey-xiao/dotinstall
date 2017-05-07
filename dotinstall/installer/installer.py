@@ -10,8 +10,8 @@ class Installer(object):
         else:
             self.logger.error("'{}' could not be installed.\n".format(dependency))
 
-    def _isInstalled (self, dependency):
+    def _isInstalled(self, dependency):
         raise NotImplementedError
 
-    def _install (self, dependency):
+    def _install(self, dependency):
         raise NotImplementedError
