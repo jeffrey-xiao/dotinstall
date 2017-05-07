@@ -22,4 +22,46 @@ def parseOptions(args):
     update = args.update
     prompt = args.prompt
 
-    return (src, conf, update, prompt)
+    return {
+        'src': src,
+        'conf': conf,
+        'update': update,
+        'prompt': prompt
+    }
+
+
+def parseData(package, packageName):
+    ret = {
+        'linkLocations': [],
+        'overwrite': True,
+        'prelink': [],
+        'postlink': [],
+        'dependencies': [],
+        'symlinkedFiles': set(),
+        'package': packageName
+    }
+
+    if 'link' not in package:
+        out.error("No link attribute set.\n")
+        exit(1)
+    elif isinstance(package['link'], list):
+        ret['linkLocations'] = package['link']
+    else:
+        ret['linkLocations'] = [
+            {"*": package['link']},
+            {".*": package['link']}
+        ]
+
+    if 'overwrite' in package:
+        ret['overwrite'] = package['overwrite']
+
+    if 'prelink' in package:
+        ret['prelink'] = package['prelink']
+
+    if 'postlink' in package:
+        ret['postlink'] = package['postlink']
+
+    if 'dependencies' in package:
+        ret['dependencies'] = package['dependencies']
+
+    return ret

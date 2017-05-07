@@ -1,14 +1,14 @@
-class Installer(object):
-    def __init__(self, logger):
-        self.logger = logger
+from logger import *
 
+
+class Installer(object):
     def install(self, dependency):
         if self._isInstalled(dependency):
-            self.logger.info("'{}' is already installed.\n".format(dependency))
+            Logger.info("'{}' is already installed.\n".format(dependency))
         elif self._install(dependency):
-            self.logger.success("'{}' has been successfully installed.\n".format(dependency))
+            Logger.success("'{}' has been successfully installed.\n".format(dependency))
         else:
-            self.logger.error("'{}' could not be installed.\n".format(dependency))
+            Logger.error("'{}' could not be installed.\n".format(dependency))
 
     def _isInstalled(self, dependency):
         raise NotImplementedError

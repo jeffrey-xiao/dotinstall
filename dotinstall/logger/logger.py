@@ -4,27 +4,35 @@ import sys
 
 
 class Logger(object):
-    def log(self, level, message):
+    @staticmethod
+    def log(level, message):
         sys.stdout.write('{}{}{}'.format(level, message, Level.END))
 
-    def logPipe(self, pipe):
-        self.log(Level.INFO, streamToString(pipe.stdout))
-        self.log(Level.ERROR, streamToString(pipe.stderr))
+    @staticmethod
+    def logPipe(pipe):
+        Logger.log(Level.INFO, streamToString(pipe.stdout))
+        Logger.log(Level.ERROR, streamToString(pipe.stderr))
 
-    def normal(self, message):
-        self.log(Level.NORMAL, message)
+    @staticmethod
+    def normal(message):
+        Logger.log(Level.NORMAL, message)
 
-    def error(self, message):
-        self.log(Level.ERROR, message)
+    @staticmethod
+    def error(message):
+        Logger.log(Level.ERROR, message)
 
-    def warning(self, message):
-        self.log(Level.WARNING, message)
+    @staticmethod
+    def warning(message):
+        Logger.log(Level.WARNING, message)
 
-    def success(self, message):
-        self.log(Level.SUCCESS, message)
+    @staticmethod
+    def success(message):
+        Logger.log(Level.SUCCESS, message)
 
-    def info(self, message):
-        self.log(Level.INFO, message)
+    @staticmethod
+    def info(message):
+        Logger.log(Level.INFO, message)
 
-    def header(self, message):
-        self.log(Level.HEADER, message)
+    @staticmethod
+    def header(message):
+        Logger.log(Level.HEADER, message)
