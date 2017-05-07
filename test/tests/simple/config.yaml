@@ -1,0 +1,12 @@
+test:
+  overwrite: False
+  prelink:
+    - "mkdir ~/test"
+    - "touch ~/test/1.txt"
+    - "echo 100 > ~/test/1.txt"
+  link:
+    - "1.txt": "~/test"
+    - "*": "~/other"
+    - ".*": "~/other"
+  postlink:
+    - "rm ~/other/3.txt"
