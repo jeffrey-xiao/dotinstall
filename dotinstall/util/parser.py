@@ -1,5 +1,5 @@
 import argparse
-from path import *
+from .path import *
 
 
 def readOptions():

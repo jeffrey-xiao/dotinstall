@@ -1,4 +1,4 @@
-from format import Format
+from .format import Format
 
 
 class Level(object):

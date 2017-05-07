@@ -63,7 +63,7 @@ if __name__ == "__main__":
                 pkgManager.install(dependency)
 
         for linkLocation in linkLocations:
-            for pattern, path in linkLocation.iteritems():
+            for pattern, path in linkLocation.items():
                 location = expandPath(path)
                 out.logPipe(subprocess.Popen(["mkdir", "-pv", location], stdout=subprocess.PIPE, stderr=subprocess.PIPE))
                 for filename in glob.iglob(os.path.join(src, package, pattern)):

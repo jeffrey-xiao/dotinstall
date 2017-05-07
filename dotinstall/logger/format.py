@@ -4,7 +4,7 @@ import subprocess
 def getOutput(cmd):
     ret = ""
     try:
-        ret = subprocess.check_output(cmd.split())
+        ret = subprocess.check_output(cmd.split()).decode("utf-8")
     except subprocess.CalledProcessError as e:
         pass
     return ret

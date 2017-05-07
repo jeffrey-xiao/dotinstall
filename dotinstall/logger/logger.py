@@ -1,4 +1,4 @@
-from level import Level
+from .level import Level
 from util import *
 import sys
 
