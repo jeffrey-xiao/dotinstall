@@ -14,3 +14,4 @@ test:
     - "rm ~/other/3.txt"
     - "rm ./test/tests/simple/test/broken1.txt"
     - "rm ./test/tests/simple/test/broken2.txt"
+    - "echo $(pwd)"

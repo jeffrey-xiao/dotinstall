@@ -1,18 +1,12 @@
 import sys
 import os
 from .level import Level
-from util import *
 
 
 class Logger(object):
     @staticmethod
     def log(level, message):
         sys.stdout.write('{}{}{}'.format(level, message, Level.END))
-
-    @staticmethod
-    def logPipe(pipe):
-        Logger.log(Level.INFO, streamToString(pipe.stdout))
-        Logger.log(Level.ERROR, streamToString(pipe.stderr))
 
     @staticmethod
     def normal(message):
