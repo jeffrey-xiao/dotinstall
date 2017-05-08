@@ -19,7 +19,7 @@ class Link(object):
                     symlinkedFiles.add(basename)
 
                     if data['overwrite']:
-                        subprocess.call(["rm", os.path.join(expandPath(location), basename)], stderr=subprcoess.DEVNULL)
+                        subprocess.call(["rm", os.path.join(expandPath(location), basename)], stderr=subprocess.DEVNULL)
                         subprocess.call(["ln", "-sfv", filename, expandPath(location)])
                     else:
                         subprocess.call(["ln", "-sv", filename, expandPath(location)])
