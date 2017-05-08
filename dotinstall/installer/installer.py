@@ -1,6 +1,7 @@
 import subprocess
 from logger import Logger
 
+
 class Installer(object):
     def install(self, dependency):
         if self._isInstalled(dependency):

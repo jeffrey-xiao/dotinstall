@@ -13,8 +13,10 @@ def expand(token):
         return None
     return os.path.expanduser(os.path.expandvars(token))
 
+
 def isBrokenSymlink(filepath):
     return os.path.exists(filepath) and not os.path.exists(filepath)
+
 
 def clean(path):
     path = expand(path)

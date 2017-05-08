@@ -1,6 +1,7 @@
 import subprocess
 from logger import Logger
 
+
 class Prelink(object):
     def execute(self, options, data, pkgManager):
         if not options['update']:

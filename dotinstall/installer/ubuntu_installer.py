@@ -2,6 +2,7 @@ import subprocess
 from installer import Installer
 from util import *
 
+
 class UbuntuInstaller(Installer):
     def _isInstalled(self, dependency):
         pipe = subprocess.Popen(["dpkg-query", "-W", "-f=${Status}", dependency], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
