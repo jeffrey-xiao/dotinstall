@@ -38,6 +38,8 @@ it will only link ```2.txt``` and ```3.txt``` when you later try to link ```*.tx
 
 **postlink**: A list of scripts that will run after dependency installation and linking.
 
-**dependencies**: A list of dependencies of each package that will be installed by the detected package manager.
+**dependencies**: A list of dependencies of each package that will be installed by the detected package manager. Dependency installation will occur before linking.
 
-**overwrite**: If true (default), the symlinking will forcably remove existing files, symlinks, and directories.
+**overwrite**: If true (default), the symlinking will forcibly remove existing files, symlinks, and directories.
+
+**clean**: If true (default), dotinstall will remove all broken symlinks in all target directories.
