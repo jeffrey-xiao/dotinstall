@@ -19,7 +19,7 @@ if __name__ == "__main__":
     for package in packages:
         if options['prompt']:
             Logger.header("\nInstall {} (Y/n)? ".format(package))
-            if raw_input().strip().lower() == "n":
+            if input().strip().lower() == "n":
                 continue
         else:
             Logger.header("\nInstalling {}\n".format(package))
