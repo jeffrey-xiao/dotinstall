@@ -43,3 +43,11 @@ it will only link ```2.txt``` and ```3.txt``` when you later try to link ```*.tx
 **overwrite**: If true (default), the symlinking will forcibly remove existing files, symlinks, and directories.
 
 **clean**: If true (default), dotinstall will remove all broken symlinks in all target directories.
+
+## Example
+Please see my personal dotfile [config](https://github.com/jeffrey-xiao/dotfiles/blob/master/config.yaml).
+
+## Contributing
+Please fork the repository and submit a PR. New plugins are very easy to create, by adding a new class with a `execute` command.
+
+Additionally, only the `apt-get` package manager is integrated into `dotinstall`. Feel free to add other package managers (`brew`, `pacman`).
