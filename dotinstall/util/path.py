@@ -15,12 +15,12 @@ def expand(token):
 
 
 def isBrokenSymlink(filepath):
-    return os.path.exists(filepath) and not os.path.exists(filepath)
+    return os.path.islink(filepath) and not os.path.exists(filepath)
 
 
 def clean(path):
     path = expand(path)
-    if not os.path.exists(path):
+    if not os.path.exists(path) and not os.path.islink(path):
         return
     if os.path.isdir(path):
         shutil.rmtree(path)
