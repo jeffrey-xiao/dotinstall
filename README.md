@@ -12,19 +12,19 @@ Features:
  - Globbing for specifying targets to symlink in each package.
  - Prelink, and postlink scripts to run before symlinking and dependency installation.
  - Easy configuration setup using yaml.
- 
+
 ## Installation
 ```
 mkdir dotfiles
 cd dotfiles
 git submodule add https://github.com/jeffrey-xiao/dotinstall.git
 git submodule update --init --recursive
-chmod +x ./dotinstall/install
-./dotinstall/install
+pip3 install -rrequirements.txt
+python3 ./dotinstall/install.py
 ```
 
 ## Usage
-Run ```./dotinstall/install -h``` for more details.
+Run ```python3 ./dotinstall/install.py -h``` for more details.
 
 ## Config File
 The config file (default ```config.yaml```) has the following possible entries.
@@ -43,6 +43,8 @@ it will only link ```2.txt``` and ```3.txt``` when you later try to link ```*.tx
 **overwrite**: If true (default), the symlinking will forcibly remove existing files, symlinks, and directories.
 
 **clean**: If true (default), dotinstall will remove all broken symlinks in all target directories.
+
+The order of the commands will be: prelink -> dependencies -> link -> postlink -> clean.
 
 ## Example
 Please see my personal dotfile [config](https://github.com/jeffrey-xiao/dotfiles/blob/master/config.yaml).
