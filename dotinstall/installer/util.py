@@ -1,5 +1,7 @@
 import subprocess
-from installer import UbuntuInstaller
+
+
+from dotinstall.installer.ubuntu_installer import UbuntuInstaller
 
 
 def getSystemInstaller():

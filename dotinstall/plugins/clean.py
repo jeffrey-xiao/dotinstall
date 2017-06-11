@@ -1,7 +1,10 @@
+import os
 import subprocess
 import glob
-from logger import Logger
-from util import *
+
+
+import dotinstall.util.path as path
+from dotinstall.util.logger import Logger
 
 
 class Clean(object):
@@ -9,12 +12,12 @@ class Clean(object):
         if data['clean']:
             folders = set()
             for linkLocation in data['linkLocations']:
-                for pattern, path in linkLocation.items():
-                    location = expandPath(path)
+                for pattern, destPath in linkLocation.items():
+                    location = path.expandPath(destPath)
                     folders.add(location)
 
             for folder in folders:
                 for pattern in ['.*', '*']:
                     for filename in glob.iglob(os.path.join(folder, pattern)):
-                        if isBrokenSymlink(filename):
-                            clean(filename)
+                        if path.isBrokenSymlink(filename):
+                            path.clean(filename)

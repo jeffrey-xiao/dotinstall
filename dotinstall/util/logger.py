@@ -1,6 +1,8 @@
 import sys
 import os
-from .level import Level
+
+
+from dotinstall.util.level import Level
 
 
 class Logger(object):

@@ -1,5 +1,8 @@
 import argparse
-from .path import *
+import os
+
+
+import dotinstall.util.path as path
 
 
 def readOptions():
@@ -17,8 +20,8 @@ def readOptions():
 
 
 def parseOptions(args):
-    src = expandPath(args.src) or os.path.dirname(os.path.realpath(os.path.join(__file__, "..", "..", "..")))
-    conf = expandPath(args.conf) or os.path.join(src, "config.yaml")
+    src = path.expandPath(args.src) or os.path.dirname(os.path.realpath(os.path.join(__file__, "..", "..", "..")))
+    conf = path.expandPath(args.conf) or os.path.join(src, "config.yaml")
     update = args.update
     prompt = args.prompt
 

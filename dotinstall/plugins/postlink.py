@@ -1,5 +1,7 @@
 import subprocess
-from logger import Logger
+
+
+from dotinstall.util.logger import Logger
 
 
 class Postlink(object):

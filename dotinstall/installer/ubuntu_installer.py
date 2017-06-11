@@ -1,6 +1,7 @@
 import subprocess
-from installer import Installer
-from util import *
+
+
+from dotinstall.installer.installer import Installer
 
 
 class UbuntuInstaller(Installer):

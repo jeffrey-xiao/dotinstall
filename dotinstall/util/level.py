@@ -1,4 +1,4 @@
-from .format import Format
+from dotinstall.util.format import Format
 
 
 class Level(object):
