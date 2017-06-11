@@ -1,0 +1,17 @@
+test:
+  prelink:
+    - "mkdir ~/test"
+    - "touch ~/test/1.txt"
+    - "echo 100 > ~/test/1.txt"
+    - "echo 2 > ~/test/2.txt"
+    - "touch ./test/resources/simple/test/broken1.txt"
+    - "touch ./test/resources/simple/test/broken2.txt"
+  link:
+    - "*1.txt": "~/test"
+    - "*": "~/other"
+    - ".*": "~/other"
+  postlink:
+    - "rm ~/other/3.txt"
+    - "rm ./test/resources/simple/test/broken1.txt"
+    - "rm ./test/resources/simple/test/broken2.txt"
+    - "echo $(pwd)"

@@ -1,5 +1,5 @@
 import dotinstall.util.parser as parser
-import dotinstall.dotinstall
+import dotinstall.dotinstall as dotinstall
 
 if __name__ == "__main__":
     options = parser.parse_options(parser.read_options())

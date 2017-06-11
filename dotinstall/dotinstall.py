@@ -28,7 +28,7 @@ def main(options):
         packages = yaml.load(f)
 
     for package in packages:
-        if options['prompt']:
+        if options['prompt']:  # pragma: no cover
             Logger.header("\nInstall {} (Y/n)? ".format(package))
             if input().strip().lower() == "n":
                 continue

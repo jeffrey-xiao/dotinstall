@@ -1,0 +1,7 @@
+test:
+  overwrite: False
+  prelink:
+    - "mkdir -p ~/test"
+    - "echo \"original 1\" > ~/test/1.txt"
+    - "echo \"original 2\" > ~/test/2.txt"
+  link: "~/test"

@@ -5,7 +5,7 @@ def get_output(cmd):
     ret = ""
     try:
         ret = subprocess.check_output(cmd.split()).decode("utf-8")
-    except subprocess.CalledProcessError as e:
+    except subprocess.CalledProcessError as e:  # pragma: no cover
         pass
     return ret
 

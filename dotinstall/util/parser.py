@@ -3,9 +3,10 @@ import os
 
 
 import dotinstall.util.path as path
+from dotinstall.util.logger import Logger
 
 
-def read_options():
+def read_options():  # pragma: no cover
     parser = argparse.ArgumentParser(description="Installation script for dotfiles.")
     parser.add_argument("-s", "--src", dest="src", metavar="dir",
         help="root directory of dotfiles")
@@ -19,7 +20,7 @@ def read_options():
     return parser.parse_args()
 
 
-def parse_options(args):
+def parse_options(args):  # pragma: no cover
     src = path.expand_path(args.src) or os.path.dirname(os.path.realpath(os.path.join(__file__, "..", "..", "..")))
     conf = path.expand_path(args.conf) or os.path.join(src, "config.yaml")
     update = args.update
@@ -46,7 +47,7 @@ def parse_data(package, package_name):
     }
 
     if 'link' not in package:
-        out.error("No link attribute set.\n")
+        Logger.error("No link attribute set.\n")
         exit(1)
     elif isinstance(package['link'], list):
         ret['linkLocations'] = package['link']

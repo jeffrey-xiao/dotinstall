@@ -5,7 +5,7 @@ from dotinstall.util.logger import Logger
 
 
 class Installer(object):
-    def install(self, dependency):
+    def install(self, dependency):  # pragma: no cover
         if self._is_installed(dependency):
             Logger.info("'{}' is already installed.\n".format(dependency))
         elif self._install(dependency):
