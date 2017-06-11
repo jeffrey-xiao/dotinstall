@@ -10,11 +10,11 @@ from dotinstall.plugins.dependency import Dependency
 from dotinstall.plugins.link import Link
 from dotinstall.plugins.postlink import Postlink
 from dotinstall.plugins.clean import Clean
-from dotinstall.installer.util import getSystemInstaller
+from dotinstall.installer.util import get_system_installer
 from dotinstall.util.logger import Logger
 
 
-pkgManager = getSystemInstaller()
+pkg_manager = get_system_installer()
 plugins = [
     Prelink(), 
     Dependency(),
@@ -24,8 +24,7 @@ plugins = [
 ]
 
 if __name__ == "__main__":
-    print(parser)
-    options = parser.parseOptions(parser.readOptions())
+    options = parser.parse_options(parser.read_options())
 
     with io.open(options['conf'], "r") as f:
         packages = yaml.load(f)
@@ -38,6 +37,6 @@ if __name__ == "__main__":
         else:
             Logger.header("\nInstalling {}\n".format(package))
 
-        data = parser.parseData(packages[package], package)
+        data = parser.parse_data(packages[package], package)
         for plugin in plugins:
-            plugin.execute(options, data, pkgManager)
+            plugin.execute(options, data, pkg_manager)

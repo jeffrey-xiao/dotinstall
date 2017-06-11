@@ -1,5 +1,5 @@
 class Dependency(object):
-    def execute(self, options, data, pkgManager):
+    def execute(self, options, data, pkg_manager):
         if not options['update']:
             for dependency in data['dependencies']:
-                pkgManager.install(dependency)
+                pkg_manager.install(dependency)

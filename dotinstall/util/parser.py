@@ -5,7 +5,7 @@ import os
 import dotinstall.util.path as path
 
 
-def readOptions():
+def read_options():
     parser = argparse.ArgumentParser(description="Installation script for dotfiles.")
     parser.add_argument("-s", "--src", dest="src", metavar="dir",
         help="root directory of dotfiles")
@@ -19,9 +19,9 @@ def readOptions():
     return parser.parse_args()
 
 
-def parseOptions(args):
-    src = path.expandPath(args.src) or os.path.dirname(os.path.realpath(os.path.join(__file__, "..", "..", "..")))
-    conf = path.expandPath(args.conf) or os.path.join(src, "config.yaml")
+def parse_options(args):
+    src = path.expand_path(args.src) or os.path.dirname(os.path.realpath(os.path.join(__file__, "..", "..", "..")))
+    conf = path.expand_path(args.conf) or os.path.join(src, "config.yaml")
     update = args.update
     prompt = args.prompt
 
@@ -33,7 +33,7 @@ def parseOptions(args):
     }
 
 
-def parseData(package, packageName):
+def parse_data(package, package_name):
     ret = {
         'linkLocations': [],
         'overwrite': True,
@@ -42,7 +42,7 @@ def parseData(package, packageName):
         'postlink': [],
         'dependencies': [],
         'symlinkedFiles': set(),
-        'package': packageName
+        'package': package_name
     }
 
     if 'link' not in package:

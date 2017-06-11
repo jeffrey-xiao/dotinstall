@@ -1,7 +1,7 @@
 import subprocess
 
 
-def getOutput(cmd):
+def get_output(cmd):
     ret = ""
     try:
         ret = subprocess.check_output(cmd.split()).decode("utf-8")
@@ -11,10 +11,10 @@ def getOutput(cmd):
 
 
 class Format(object):
-    BOLD = getOutput("tput bold")
-    RESET = getOutput("tput sgr0")
+    BOLD = get_output("tput bold")
+    RESET = get_output("tput sgr0")
 
-    BLUE = getOutput("tput setaf 4")
-    GREEN = getOutput("tput setaf 2")
-    YELLOW = getOutput("tput setaf 3")
-    RED = getOutput("tput setaf 1")
+    BLUE = get_output("tput setaf 4")
+    GREEN = get_output("tput setaf 2")
+    YELLOW = get_output("tput setaf 3")
+    RED = get_output("tput setaf 1")

@@ -2,7 +2,7 @@ import os
 import shutil
 
 
-def expandPath(path):
+def expand_path(path):
     if path is None:
         return None
     return os.path.abspath(expand(path))
@@ -14,7 +14,7 @@ def expand(token):
     return os.path.expanduser(os.path.expandvars(token))
 
 
-def isBrokenSymlink(filepath):
+def is_broken_symlink(filepath):
     return os.path.islink(filepath) and not os.path.exists(filepath)
 
 
