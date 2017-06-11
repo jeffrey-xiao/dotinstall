@@ -19,7 +19,7 @@ mkdir dotfiles
 cd dotfiles
 git submodule add https://github.com/jeffrey-xiao/dotinstall.git
 git submodule update --init --recursive
-pip3 install -rrequirements.txt
+pip3 install -r ./dotinstall/requirements.txt
 python3 ./dotinstall/install.py
 ```
 
