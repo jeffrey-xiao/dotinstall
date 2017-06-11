@@ -5,27 +5,25 @@ import yaml
 
 
 import dotinstall.util.parser as parser
+from dotinstall.installer.util import get_system_installer
 from dotinstall.plugins.prelink import Prelink
 from dotinstall.plugins.dependency import Dependency
 from dotinstall.plugins.link import Link
 from dotinstall.plugins.postlink import Postlink
 from dotinstall.plugins.clean import Clean
-from dotinstall.installer.util import get_system_installer
 from dotinstall.util.logger import Logger
 
 
 pkg_manager = get_system_installer()
 plugins = [
-    Prelink(), 
+    Prelink(),
     Dependency(),
     Link(),
     Postlink(),
     Clean(),
 ]
 
-if __name__ == "__main__":
-    options = parser.parse_options(parser.read_options())
-
+def main(options):
     with io.open(options['conf'], "r") as f:
         packages = yaml.load(f)
 

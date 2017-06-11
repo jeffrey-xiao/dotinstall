@@ -1,5 +1,11 @@
+import os
 import unittest
-from helper import *
+
+
+import dotinstall.dotinstall as dotinstall
+import dotinstall.util.path as path
+from test.checks.helper import expand
+from test.checks.helper import clean
 
 class SimpleTest(unittest.TestCase):
     def test_linking(self):
@@ -24,13 +30,22 @@ class SimpleTest(unittest.TestCase):
         self.assertTrue(not os.path.islink("~/other/broken2.txt"))
 
     @classmethod
+    def setUpClass(cls):
+        super(SimpleTest, cls).setUpClass()
+        dotinstall.main({
+            'src': path.expand_path('./test/tests/simple'),
+            'conf': path.expand_path('./test/tests/simple/config.yaml'),
+            'update': False,
+            'prompt': False,
+        })
+
+    @classmethod
     def tearDownClass(cls):
         super(SimpleTest, cls).tearDownClass()
         clean("~/test")
         clean("~/other")
 
-def main():
-    unittest.main()
-
-if __name__ == '__main__':
-    main()
+def suite():
+    test_suite = unittest.TestSuite()
+    test_suite.addTest(unittest.makeSuite(SimpleTest))
+    return test_suite

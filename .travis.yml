@@ -8,7 +8,9 @@ python:
 install:
   - "pip3 install pep8"
   - "pip3 install -r requirements.txt"
+  - "pip3 install -r requirements-dev.txt"
 script:
-  - "chmod +x ./tests.sh"
-  - "./tests.sh"
+  - "coverage run --source=dotinstall tests.py"
+after_success:
+  coveralls
 sudo: required

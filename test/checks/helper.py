@@ -2,7 +2,7 @@ import os
 import shutil
 
 
-def expandPath(path):
+def expand_path(path):
     if path is None:
         return None
     return os.path.abspath(expand(path))
