@@ -11,9 +11,9 @@ from test.util import clean
 
 class NoCleanTest(unittest.TestCase):
     def test_no_clean(self):
-        self.assertTrue(not os.path.exists(expand("~/test/broken1.txt")))
+        self.assertFalse(os.path.exists(expand("~/test/broken1.txt")))
         self.assertTrue(os.path.islink(expand("~/test/broken1.txt")))
-        self.assertTrue(not os.path.exists(expand("~/test/broken2.txt")))
+        self.assertFalse(os.path.exists(expand("~/test/broken2.txt")))
         self.assertTrue(os.path.islink(expand("~/test/broken2.txt")))
 
     @classmethod

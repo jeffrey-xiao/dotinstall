@@ -23,13 +23,13 @@ class SimpleTest(unittest.TestCase):
             self.assertTrue(fin.read().strip() == "2")
 
     def test_postlink(self):
-        self.assertTrue(not os.path.exists(expand("~/other/3.txt")))
+        self.assertFalse(os.path.exists(expand("~/other/3.txt")))
 
     def test_clean(self):
-        self.assertTrue(not os.path.exists(expand("~/test/broken1.txt")))
-        self.assertTrue(not os.path.islink(expand("~/test/broken1.txt")))
-        self.assertTrue(not os.path.exists(expand("~/test/broken2.txt")))
-        self.assertTrue(not os.path.islink(expand("~/test/broken2.txt")))
+        self.assertFalse(os.path.exists(expand("~/test/broken1.txt")))
+        self.assertFalse(os.path.islink(expand("~/test/broken1.txt")))
+        self.assertFalse(os.path.exists(expand("~/test/broken2.txt")))
+        self.assertFalse(os.path.islink(expand("~/test/broken2.txt")))
 
     @classmethod
     def setUpClass(cls):

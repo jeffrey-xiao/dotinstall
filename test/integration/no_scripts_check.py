@@ -12,10 +12,10 @@ from test.util import clean
 
 class NoScriptsTest(unittest.TestCase):
     def test_no_prelink(self):
-        self.assertTrue(not os.path.exists(expand("~/test/1.txt")))
+        self.assertFalse(os.path.exists(expand("~/test/1.txt")))
 
     def test_no_postlink(self):
-        self.assertTrue(not os.path.exists(expand("~/test/2.txt")))
+        self.assertFalse(os.path.exists(expand("~/test/2.txt")))
 
     @classmethod
     def setUpClass(cls):
