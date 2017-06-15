@@ -11,6 +11,7 @@ from test.util import clean
 
 
 class NoScriptsTest(unittest.TestCase):
+
     def test_no_prelink(self):
         self.assertFalse(os.path.exists(expand("~/test/1.txt")))
 

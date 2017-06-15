@@ -5,6 +5,7 @@ from dotinstall.util.logger import Logger
 
 
 class Postlink(object):
+
     def execute(self, options, data, pkg_manager):
         if not options['update']:
             for script in data['postlink']:

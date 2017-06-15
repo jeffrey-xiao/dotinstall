@@ -9,7 +9,9 @@ from test.util import expand
 from test.util import execute_main
 from test.util import clean
 
+
 class SimpleTest(unittest.TestCase):
+
     def test_linking(self):
         self.assertTrue(os.path.islink(expand("~/other/2.txt")))
 

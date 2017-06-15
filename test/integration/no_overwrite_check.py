@@ -11,6 +11,7 @@ from test.util import clean
 
 
 class NoOverwriteTest(unittest.TestCase):
+
     def test_no_overwrite(self):
         with io.open(expand("~/test/1.txt")) as fin:
             self.assertTrue(fin.read().strip() == "original 1")

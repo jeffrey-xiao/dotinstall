@@ -8,6 +8,7 @@ import dotinstall.util.parser as parser
 
 
 class TestParser(unittest.TestCase):
+
     @mock.patch('dotinstall.util.parser.Logger')
     def test_parse_data_no_link(self, mock_logger):
         with self.assertRaises(SystemExit) as e:

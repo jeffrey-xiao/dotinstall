@@ -23,6 +23,7 @@ plugins = [
     Clean(),
 ]
 
+
 def main(options):
     with io.open(options['conf'], "r") as f:
         packages = yaml.load(f)

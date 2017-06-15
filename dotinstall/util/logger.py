@@ -6,6 +6,7 @@ from dotinstall.util.level import Level
 
 
 class Logger(object):  # pragma: no cover
+
     @staticmethod
     def log(level, message):
         sys.stdout.write('{}{}{}'.format(level, message, Level.END))

@@ -7,22 +7,32 @@ from dotinstall.util.logger import Logger
 
 
 def read_options():  # pragma: no cover
-    parser = argparse.ArgumentParser(description="Installation script for dotfiles.")
+    parser = argparse.ArgumentParser(
+        description="Installation script for dotfiles.")
     parser.add_argument("-s", "--src", dest="src", metavar="dir",
-        help="root directory of dotfiles")
+                        help="root directory of dotfiles")
     parser.add_argument("-c", "--conf", dest="conf", metavar="file",
-        help="config file for symlinking and installing")
+                        help="config file for symlinking and installing")
     parser.add_argument("-p", "--prompt", dest="prompt", action="store_true",
-        help="prompt user before installing package")
+                        help="prompt user before installing package")
     parser.add_argument("-u", "--update", dest="update", action="store_true",
-        help="only symlinks files")
+                        help="only symlinks files")
 
     return parser.parse_args()
 
 
 def parse_options(args):  # pragma: no cover
-    src = path.expand_path(args.src) or os.path.dirname(os.path.realpath(os.path.join(__file__, "..", "..", "..")))
-    conf = path.expand_path(args.conf) or os.path.join(src, "config.yaml")
+    default_dir = os.path.dirname(os.path.realpath(os.path.join(
+        __file__,
+        "..",
+        "..",
+        ".."
+    )))
+    src = path.expand_path(args.src) or default_dir
+
+    default_config = os.path.join(src, "config.yaml")
+    conf = path.expand_path(args.conf) or default_config
+
     update = args.update
     prompt = args.prompt
 
