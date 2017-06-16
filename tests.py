@@ -1,13 +1,14 @@
 import unittest
 
 
-from test.integration.simple_check import SimpleTest
-from test.integration.no_clean_check import NoCleanTest
-from test.integration.no_overwrite_check import NoOverwriteTest
-from test.integration.no_scripts_check import NoScriptsTest
+from test.integration.simple_test import SimpleTest
+from test.integration.no_clean_test import NoCleanTest
+from test.integration.no_overwrite_test import NoOverwriteTest
+from test.integration.no_scripts_test import NoScriptsTest
+from test.integration.prompt_test import PromptTest
 
 
-from test.unit.test_parser import TestParser
+from test.unit.parser_test import ParserTest
 
 
 def get_suite():
@@ -16,8 +17,9 @@ def get_suite():
     test_suite.addTest(unittest.makeSuite(NoCleanTest))
     test_suite.addTest(unittest.makeSuite(NoOverwriteTest))
     test_suite.addTest(unittest.makeSuite(NoScriptsTest))
+    test_suite.addTest(unittest.makeSuite(PromptTest))
 
-    test_suite.addTest(unittest.makeSuite(TestParser))
+    test_suite.addTest(unittest.makeSuite(ParserTest))
     return test_suite
 
 

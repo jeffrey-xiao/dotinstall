@@ -1,0 +1,8 @@
+test1:
+  prelink:
+    - "mkdir ~/test1"
+  link: "~/test1"
+test2:
+  prelink:
+    - "mkdir ~/test2"
+  link: "~/test2"

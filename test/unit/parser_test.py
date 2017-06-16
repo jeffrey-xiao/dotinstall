@@ -7,7 +7,7 @@ import unittest
 import dotinstall.util.parser as parser
 
 
-class TestParser(unittest.TestCase):
+class ParserTest(unittest.TestCase):
 
     @mock.patch('dotinstall.util.parser.Logger')
     def test_parse_data_no_link(self, mock_logger):
