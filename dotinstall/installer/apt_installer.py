@@ -4,7 +4,7 @@ import subprocess
 from dotinstall.installer.installer import Installer
 
 
-class UbuntuInstaller(Installer):
+class AptInstaller(Installer):
 
     def _is_installed(self, dependency):  # pragma: no cover
         pipe = subprocess.Popen(
@@ -15,4 +15,8 @@ class UbuntuInstaller(Installer):
         return pipe.communicate()[0].decode().strip() == "install ok installed"
 
     def _install(self, dependency):  # pragma: no cover
-        return subprocess.call(["sudo", "apt-get", "install", "-y", dependency], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL) == 0
+        return subprocess.call(
+                ["sudo", "apt-get", "install", "-y", dependency],
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL
+        ) == 0
