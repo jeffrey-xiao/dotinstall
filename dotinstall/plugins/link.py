@@ -15,7 +15,7 @@ class Link(object):
             for pattern, dest_path in link_location.items():
                 location = path.expand_path(dest_path)
                 subprocess.call(
-                    ["mkdir", "-pv", location], 
+                    ["mkdir", "-pv", location],
                     stderr=subprocess.DEVNULL,
                 )
                 for filename in glob.iglob(os.path.join(options['src'], data['package'], pattern)):
@@ -24,11 +24,11 @@ class Link(object):
                         continue
                     symlinked_files.add(basename)
 
-                    path = os.path.join(path.expand_path(location), basename)
+                    file_path = os.path.join(path.expand_path(location), basename)
 
                     if data['overwrite']:
                         subprocess.call(
-                            ["rm", path], 
+                            ["rm", file_path],
                             stderr=subprocess.DEVNULL,
                         )
                         subprocess.call(
