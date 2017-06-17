@@ -8,17 +8,14 @@ import dotinstall.dotinstall as dotinstall
 def expand_path(path):
     if path is None:
         return None
-    return os.path.abspath(expand(path))
-
-
-def expand(token):
-    if token is None:
-        return None
-    return os.path.expanduser(os.path.expandvars(token))
+    path = os.path.expandvars(path)
+    path = os.path.expanduser(path)
+    path = os.path.abspath(path)
+    return path
 
 
 def clean(path):
-    path = expand(path)
+    path = expand_path(path)
     if not os.path.exists(path):
         return
     if os.path.isdir(path):

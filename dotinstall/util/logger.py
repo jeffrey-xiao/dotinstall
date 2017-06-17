@@ -5,7 +5,7 @@ import os
 from dotinstall.util.level import Level
 
 
-class Logger(object):  # pragma: no cover
+class Logger(object):
 
     @staticmethod
     def log(level, message):

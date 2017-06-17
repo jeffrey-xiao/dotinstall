@@ -6,7 +6,7 @@ import dotinstall.util.path as path
 from dotinstall.util.logger import Logger
 
 
-def read_options():  # pragma: no cover
+def read_options(argv=None):
     parser = argparse.ArgumentParser(
         description="Installation script for dotfiles.")
     parser.add_argument("-s", "--src", dest="src", metavar="dir",
@@ -18,10 +18,10 @@ def read_options():  # pragma: no cover
     parser.add_argument("-u", "--update", dest="update", action="store_true",
                         help="only symlinks files")
 
-    return parser.parse_args()
+    return parser.parse_args(argv)
 
 
-def parse_options(args):  # pragma: no cover
+def parse_options(args):
     default_dir = os.path.dirname(os.path.realpath(os.path.join(
         __file__,
         "..",

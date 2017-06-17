@@ -3,15 +3,12 @@ import shutil
 
 
 def expand_path(path):
-    if path is None:  # pragma: no cover
+    if path is None:
         return None
-    return os.path.abspath(expand(path))
-
-
-def expand(token):  # pragma: no cover
-    if token is None:
-        return None
-    return os.path.expanduser(os.path.expandvars(token))
+    path = os.path.expandvars(path)
+    path = os.path.expanduser(path)
+    path = os.path.abspath(path)
+    return path
 
 
 def is_broken_symlink(filepath):
@@ -19,10 +16,7 @@ def is_broken_symlink(filepath):
 
 
 def clean(path):
-    path = expand(path)
-    if not os.path.exists(path) and not os.path.islink(path):  # pragma: no cover
-        return
-    if os.path.isdir(path):  # pragma: no cover
-        shutil.rmtree(path)
-    else:
-        os.remove(path)
+    path = expand_path(path)
+    assert is_broken_symlink(path)
+    assert not os.path.isdir(path)
+    os.remove(path)
