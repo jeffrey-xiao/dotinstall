@@ -1,2 +1,1 @@
-PyYAML; python_version >= '3.0'
-
+pyyaml>=3.0

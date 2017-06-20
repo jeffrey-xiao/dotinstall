@@ -14,9 +14,9 @@ class NoOverwriteTest(unittest.TestCase):
 
     def test_no_overwrite(self):
         with io.open(expand_path("~/test/1.txt")) as fin:
-            self.assertTrue(fin.read().strip() == "original 1")
+            self.assertEqual(fin.read().strip(), "original 1")
         with io.open(expand_path("~/test/2.txt")) as fin:
-            self.assertTrue(fin.read().strip() == "original 2")
+            self.assertEqual(fin.read().strip(), "original 2")
 
     @classmethod
     def setUpClass(cls):

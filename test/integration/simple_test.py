@@ -18,11 +18,11 @@ class SimpleTest(unittest.TestCase):
     def test_no_overwrite(self):
         self.assertTrue(os.path.isfile(expand_path("~/test/1.txt")))
         with io.open(expand_path("~/test/1.txt")) as fin:
-            self.assertTrue(fin.read().strip() == "1")
+            self.assertEqual(fin.read().strip(), "1")
 
     def test_prelink(self):
         with io.open(expand_path("~/test/2.txt")) as fin:
-            self.assertTrue(fin.read().strip() == "2")
+            self.assertEqual(fin.read().strip(), "2")
 
     def test_postlink(self):
         self.assertFalse(os.path.exists(expand_path("~/other/3.txt")))

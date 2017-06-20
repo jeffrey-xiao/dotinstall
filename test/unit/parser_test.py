@@ -14,8 +14,8 @@ class ParserTest(unittest.TestCase):
 
         self.assertFalse(args.prompt)
         self.assertFalse(args.update)
-        self.assertTrue(args.src == None)
-        self.assertTrue(args.conf == None)
+        self.assertIsNone(args.src)
+        self.assertIsNone(args.conf)
 
     def test_read_options_short(self):
         args = parser.read_options((
@@ -29,8 +29,8 @@ class ParserTest(unittest.TestCase):
 
         self.assertTrue(args.prompt)
         self.assertTrue(args.update)
-        self.assertTrue(args.src == './test')
-        self.assertTrue(args.conf == '~/test')
+        self.assertEqual(args.src, './test')
+        self.assertEqual(args.conf, '~/test')
 
     def test_read_options_long(self):
         args = parser.read_options((
@@ -44,9 +44,8 @@ class ParserTest(unittest.TestCase):
 
         self.assertTrue(args.prompt)
         self.assertTrue(args.update)
-        self.assertTrue(args.src == './test')
-        self.assertTrue(args.conf == '~/test')
-
+        self.assertEqual(args.src, './test')
+        self.assertEqual(args.conf, '~/test')
 
     def test_parse_options_defaults(self):
         args = mock.Mock()
@@ -57,11 +56,12 @@ class ParserTest(unittest.TestCase):
         data = parser.parse_options(args)
 
         expected_dir = os.path.normpath(os.path.join(os.getcwd(), '..'))
+        expected_path = os.path.join(expected_dir, 'config.yaml')
 
         self.assertTrue(data['update'])
         self.assertTrue(data['prompt'])
-        self.assertTrue(data['src'] == expected_dir)
-        self.assertTrue(data['conf'] == os.path.join(expected_dir, 'config.yaml'))
+        self.assertEqual(data['src'], expected_dir)
+        self.assertEqual(data['conf'], expected_path)
 
     def test_parse_options(self):
         args = mock.Mock()
@@ -73,8 +73,8 @@ class ParserTest(unittest.TestCase):
 
         self.assertTrue(data['update'])
         self.assertTrue(data['prompt'])
-        self.assertTrue(data['src'] == os.path.join(os.environ['HOME'], 'test'))
-        self.assertTrue(data['conf'] == os.path.join(os.getcwd(), 'test'))
+        self.assertEqual(data['src'], os.path.join(os.environ['HOME'], 'test'))
+        self.assertEqual(data['conf'], os.path.join(os.getcwd(), 'test'))
 
     @mock.patch('dotinstall.util.parser.Logger')
     def test_parse_data_no_link(self, mock_logger):
@@ -85,10 +85,10 @@ class ParserTest(unittest.TestCase):
 
     def test_parse_data_one_link(self):
         ret = parser.parse_data({'link': 'test'}, 'test_package')
-        self.assertTrue('linkLocations' in ret)
-        self.assertTrue(len(ret['linkLocations']) == 2)
-        self.assertTrue(ret['linkLocations'][0] == {'*': 'test'})
-        self.assertTrue(ret['linkLocations'][1] == {'.*': 'test'})
+        self.assertIn('linkLocations', ret)
+        self.assertEqual(len(ret['linkLocations']), 2)
+        self.assertEqual(ret['linkLocations'][0], {'*': 'test'})
+        self.assertEqual(ret['linkLocations'][1], {'.*': 'test'})
 
     def test_parse_data_multiple_links(self):
         ret = parser.parse_data({
@@ -97,10 +97,10 @@ class ParserTest(unittest.TestCase):
                 {'b': 'link_b'},
             ]
         }, 'test_package')
-        self.assertTrue('linkLocations' in ret)
-        self.assertTrue(len(ret['linkLocations']) == 2)
-        self.assertTrue(ret['linkLocations'][0] == {'a': 'link_a'})
-        self.assertTrue(ret['linkLocations'][1] == {'b': 'link_b'})
+        self.assertIn('linkLocations', ret)
+        self.assertEqual(len(ret['linkLocations']), 2)
+        self.assertEqual(ret['linkLocations'][0], {'a': 'link_a'})
+        self.assertEqual(ret['linkLocations'][1], {'b': 'link_b'})
 
     def test_parse_data_attributes(self):
         ret = parser.parse_data({
@@ -112,37 +112,37 @@ class ParserTest(unittest.TestCase):
             'clean': 'clean',
         }, 'test_package')
 
-        self.assertTrue('overwrite' in ret)
-        self.assertTrue(ret['overwrite'] == 'overwrite')
-        self.assertTrue('prelink' in ret)
-        self.assertTrue(ret['prelink'] == 'prelink')
-        self.assertTrue('postlink' in ret)
-        self.assertTrue(ret['postlink'] == 'postlink')
-        self.assertTrue('dependencies' in ret)
-        self.assertTrue(ret['dependencies'] == 'dependencies')
-        self.assertTrue('clean' in ret)
-        self.assertTrue(ret['clean'] == 'clean')
+        self.assertIn('overwrite', ret)
+        self.assertEqual(ret['overwrite'], 'overwrite')
+        self.assertIn('prelink', ret)
+        self.assertEqual(ret['prelink'], 'prelink')
+        self.assertIn('postlink', ret)
+        self.assertEqual(ret['postlink'], 'postlink')
+        self.assertIn('dependencies', ret)
+        self.assertEqual(ret['dependencies'], 'dependencies')
+        self.assertIn('clean', ret)
+        self.assertEqual(ret['clean'], 'clean')
 
     def test_parse_data_no_attributes(self):
         ret = parser.parse_data({
             'link': 'test',
         }, 'test_package')
 
-        self.assertTrue('overwrite' in ret)
-        self.assertTrue(ret['overwrite'] == True)
-        self.assertTrue('prelink' in ret)
-        self.assertTrue(ret['prelink'] == [])
-        self.assertTrue('postlink' in ret)
-        self.assertTrue(ret['postlink'] == [])
-        self.assertTrue('dependencies' in ret)
-        self.assertTrue(ret['dependencies'] == [])
-        self.assertTrue('clean' in ret)
-        self.assertTrue(ret['clean'] == True)
+        self.assertIn('overwrite', ret)
+        self.assertEqual(ret['overwrite'], True)
+        self.assertIn('prelink', ret)
+        self.assertEqual(ret['prelink'], [])
+        self.assertIn('postlink', ret)
+        self.assertEqual(ret['postlink'], [])
+        self.assertIn('dependencies', ret)
+        self.assertEqual(ret['dependencies'], [])
+        self.assertIn('clean', ret)
+        self.assertEqual(ret['clean'], True)
 
     def test_parse_data_package_name(self):
         ret = parser.parse_data({
             'link': 'test',
         }, 'test_package')
 
-        self.assertTrue('package' in ret)
-        self.assertTrue(ret['package'] == 'test_package')
+        self.assertIn('package', ret)
+        self.assertEqual(ret['package'], 'test_package')

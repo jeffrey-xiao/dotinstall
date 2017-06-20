@@ -25,4 +25,4 @@ class NoCleanTest(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         super(NoCleanTest, cls).tearDownClass()
-        # clean("~/test")
+        clean("~/test")

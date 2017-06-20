@@ -24,6 +24,6 @@ def get_suite():
 
 
 if __name__ == "__main__":
-    runner = unittest.TextTestRunner(verbosity=2, buffer=True)
+    runner = unittest.TextTestRunner(verbosity=0, buffer=True)
     ret = runner.run(get_suite()).wasSuccessful()
     exit(not ret)
