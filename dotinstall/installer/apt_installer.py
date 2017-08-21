@@ -18,5 +18,5 @@ class AptInstaller(Installer):
         return subprocess.call(
                 ["sudo", "apt-get", "install", "-y", dependency],
                 stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL
+                stderr=subprocess.DEVNULL,
         ) == 0
