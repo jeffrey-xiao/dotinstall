@@ -28,7 +28,7 @@ def main(options):
     with io.open(options['conf'], "r") as f:
         packages = yaml.load(f)
 
-    for package in packages:
+    for package in sorted(packages.keys()):
         if options['prompt']:
             Logger.header("\nInstall {} (Y/n)? ".format(package))
             if input().strip().lower() == "n":
