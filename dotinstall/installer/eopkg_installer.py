@@ -6,6 +6,14 @@ from dotinstall.installer.installer import Installer
 
 class EopkgInstaller(Installer):
 
+    @staticmethod
+    def installer_exists():
+        return subprocess.call(
+            ['which', 'eopkg'],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        ) == 0
+
     def _is_installed(self, dependency):  # pragma: no cover
         eopkg_pipe = subprocess.Popen(
             ["eopkg", "li", "-i"],
@@ -23,7 +31,7 @@ class EopkgInstaller(Installer):
         grep_pipe.communicate()
 
         return grep_pipe.returncode == 0
-    
+
     def _install(self, dependency):  # pragma: no cover
         return subprocess.call(
             ["sudo", "eopkg", "it", "-y", dependency],

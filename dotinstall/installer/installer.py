@@ -6,6 +6,10 @@ from dotinstall.util.logger import Logger
 
 class Installer(object):
 
+    @staticmethod
+    def installer_exists():
+        raise NotImplementedError
+
     def install(self, dependency):  # pragma: no cover
         if self._is_installed(dependency):
             Logger.info("'{}' is already installed.\n".format(

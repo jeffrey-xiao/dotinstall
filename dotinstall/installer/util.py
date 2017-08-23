@@ -7,28 +7,10 @@ from dotinstall.installer.eopkg_installer import EopkgInstaller
 
 
 def get_system_installer():  # pragma: no cover
-    has_apt_get = subprocess.call(
-        ['which', 'apt-get'],
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
-    ) == 0
-
-    has_brew = subprocess.call(
-        ['which', 'brew'],
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
-    ) == 0
-
-    has_eopkg = subprocess.call(
-        ['which', 'eopkg'],
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
-    ) == 0
-
-    if has_apt_get:
+    if AptInstaller.installer_exists():
         return AptInstaller()
-    elif has_brew:
+    elif BrewInstaller.installer_exists():
         return BrewInstaller()
-    elif has_eopkg:
+    elif EopkgInstaller.installer_exists():
         return EopkgInstaller()
     return None

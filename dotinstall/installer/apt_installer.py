@@ -6,6 +6,14 @@ from dotinstall.installer.installer import Installer
 
 class AptInstaller(Installer):
 
+    @staticmethod
+    def installer_exists():
+        return subprocess.call(
+            ['which', 'apt-get'],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        ) == 0
+
     def _is_installed(self, dependency):  # pragma: no cover
         pipe = subprocess.Popen(
             ["dpkg-query", "-W", "-f=${Status}", dependency],
