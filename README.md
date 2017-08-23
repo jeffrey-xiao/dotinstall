@@ -52,4 +52,4 @@ Please see my personal dotfile [config](https://github.com/jeffrey-xiao/dotfiles
 ## Contributing
 Please fork the repository and submit a PR. New plugins are very easy to create, by adding a new class with a `execute` command.
 
-Additionally, only the `apt-get` package manager is integrated into `dotinstall`. Feel free to add other package managers (`brew`, `pacman`).
+Additionally, only the `apt-get`, `eopkg` and `brew` package managers are integrated into `dotinstall`. Feel free to add other package managers.
