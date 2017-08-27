@@ -55,7 +55,7 @@ class ParserTest(unittest.TestCase):
         args.src = None
         data = parser.parse_options(args)
 
-        expected_dir = os.path.normpath(os.path.join(os.getcwd(), '..'))
+        expected_dir = os.getcwd()
         expected_path = os.path.join(expected_dir, 'config.yaml')
 
         self.assertTrue(data['update'])

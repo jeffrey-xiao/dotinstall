@@ -5,9 +5,9 @@ import unittest
 
 import dotinstall.dotinstall as dotinstall
 import dotinstall.util.path as path
-from test.util import expand_path
-from test.util import execute_main
-from test.util import clean
+from tests.util import expand_path
+from tests.util import execute_main
+from tests.util import clean
 
 
 class SimpleTest(unittest.TestCase):

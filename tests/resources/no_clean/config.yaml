@@ -1,0 +1,10 @@
+test:
+  clean: False
+  prelink:
+    - "mkdir -p ./tests/resources/no_clean/test"
+    - "touch ./tests/resources/no_clean/test/broken1.txt"
+    - "touch ./tests/resources/no_clean/test/broken2.txt"
+  link: "~/test"
+  postlink:
+    - "rm ./tests/resources/no_clean/test/broken1.txt"
+    - "rm ./tests/resources/no_clean/test/broken2.txt"

@@ -6,9 +6,9 @@ from unittest.mock import patch
 
 
 import dotinstall.dotinstall as dotinstall
-from test.util import expand_path
-from test.util import execute_main
-from test.util import clean
+from tests.util import expand_path
+from tests.util import execute_main
+from tests.util import clean
 
 
 class PromptTest(unittest.TestCase):

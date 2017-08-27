@@ -25,7 +25,7 @@ def clean(path):
 
 
 def execute_main(test_name, update=False, prompt=False):
-    base_dir = os.path.join(expand_path('./test/resources'), test_name)
+    base_dir = os.path.join(expand_path('./tests/resources'), test_name)
     dotinstall.main({
         'src': base_dir,
         'conf': os.path.join(base_dir, 'config.yaml'),

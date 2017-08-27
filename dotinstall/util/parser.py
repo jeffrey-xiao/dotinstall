@@ -22,12 +22,7 @@ def read_options(argv=None):
 
 
 def parse_options(args):
-    default_dir = os.path.dirname(os.path.realpath(os.path.join(
-        __file__,
-        "..",
-        "..",
-        ".."
-    )))
+    default_dir = os.getcwd()
     src = path.expand_path(args.src) or default_dir
 
     default_config = os.path.join(src, "config.yaml")
