@@ -3,3 +3,4 @@
 venv
 .tox/
 .cache/
+dotinstall.egg-info/

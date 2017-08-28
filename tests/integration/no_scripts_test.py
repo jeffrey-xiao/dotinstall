@@ -18,7 +18,7 @@ def config():
         yield
 
 def test_no_prelink():
-    assert not os.path.exists(expand_path("~/test/1.txt"))
+    assert not os.path.exists(expand_path("./dist/1.txt"))
 
 def test_no_postlink():
-    assert not os.path.exists(expand_path("~/test/2.txt"))
+    assert not os.path.exists(expand_path("./dist/2.txt"))

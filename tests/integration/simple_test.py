@@ -34,7 +34,7 @@ def test_postlink():
     assert not os.path.exists(expand_path("./dist/3.txt"))
 
 def test_clean():
-    assert not os.path.exists(expand_path("~/test/broken1.txt"))
-    assert not os.path.islink(expand_path("~/test/broken1.txt"))
-    assert not os.path.exists(expand_path("~/test/broken2.txt"))
-    assert not os.path.islink(expand_path("~/test/broken2.txt"))
+    assert not os.path.exists(expand_path("./dist/broken1.txt"))
+    assert not os.path.islink(expand_path("./dist/broken1.txt"))
+    assert not os.path.exists(expand_path("./dist/broken2.txt"))
+    assert not os.path.islink(expand_path("./dist/broken2.txt"))

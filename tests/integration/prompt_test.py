@@ -26,5 +26,5 @@ def test_prompt_y():
 def test_prompt_n():
     with mock.patch.object(builtins, 'input', return_value='n'):
         with config():
-            assert not os.path.exists(expand_path("~/test1/test1"))
-            assert not os.path.exists(expand_path("~/test2/test2"))
+            assert not os.path.exists(expand_path("./dist1/test1"))
+            assert not os.path.exists(expand_path("./dist2/test2"))

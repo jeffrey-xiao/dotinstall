@@ -20,7 +20,7 @@ def test_read_options_short():
         '-s',
         './test',
         '-c',
-        '~/test',
+        './test/config.yaml',
         '-p',
         '-u',
     ))
@@ -28,14 +28,14 @@ def test_read_options_short():
     assert args.prompt
     assert args.update
     assert args.src == './test'
-    assert args.conf == '~/test'
+    assert args.conf == './test/config.yaml'
 
 def test_read_options_long():
     args = parser.read_options((
         '--src',
         './test',
         '--conf',
-        '~/test',
+        './test/config.yaml',
         '--prompt',
         '--update',
     ))
@@ -43,7 +43,7 @@ def test_read_options_long():
     assert args.prompt
     assert args.update
     assert args.src == './test'
-    assert args.conf == '~/test'
+    assert args.conf == './test/config.yaml'
 
 def test_parse_options_defaults():
     args = mock.Mock()
@@ -65,14 +65,14 @@ def test_parse_options():
     args = mock.Mock()
     args.update = True
     args.prompt = True
-    args.conf = './test'
-    args.src = '~/test'
+    args.src = './test'
+    args.conf = './test/config.yaml'
     data = parser.parse_options(args)
 
     assert data['update']
     assert data['prompt']
-    assert data['src'] == os.path.join(os.environ['HOME'], 'test')
-    assert data['conf'] == os.path.join(os.getcwd(), 'test')
+    assert data['src'] == os.path.join(os.getcwd(), 'test')
+    assert data['conf'] == os.path.join(os.getcwd(), 'test', 'config.yaml')
 
 def test_parse_data_no_link(mock_logger):
     with pytest.raises(SystemExit) as excinfo:

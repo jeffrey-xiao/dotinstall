@@ -2,6 +2,6 @@ test:
   prelink:
     - "mkdir ./dist"
     - "touch ./dist/1.txt"
-  link: "~/dist"
+  link: "./dist"
   postlink:
     - "touch ./dist/2.txt"
