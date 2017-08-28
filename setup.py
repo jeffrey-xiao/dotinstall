@@ -2,7 +2,15 @@ from distutils.core import setup
 
 setup(
     name = 'dotinstall',
-    packages = ['dotinstall'],
+    packages = [
+        'dotinstall',
+        'dotinstall.plugins',
+        'dotinstall.installer',
+        'dotinstall.util',
+    ],
+    install_requires=[
+        'PyYAML',
+    ],
     version = '0.2.0',
     description = 'Command-line tool to help install and setup your dotfiles.',
     author = 'Jeffrey Xiao',
