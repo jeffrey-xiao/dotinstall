@@ -17,14 +17,12 @@ Features:
 ```
 mkdir dotfiles
 cd dotfiles
-git submodule add https://github.com/jeffrey-xiao/dotinstall.git
-git submodule update --init --recursive
-pip3 install -r ./dotinstall/requirements.txt
-python3 ./dotinstall/install.py
+pip3 install dotinstall
+dotinstall
 ```
 
 ## Usage
-Run ```python3 ./dotinstall/install.py -h``` for more details.
+Run ```dotinstall -h``` for more details.
 
 ## Config File
 The config file (default ```config.yaml```) has the following possible entries.
