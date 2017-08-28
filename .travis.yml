@@ -7,6 +7,7 @@ python:
   - "nightly"
 install:
   - "pip3 install pep8"
+  - "pip3 install tox-travis"
   - "pip3 install -rrequirements.txt"
   - "pip3 install -rrequirements-dev.txt"
 script:
