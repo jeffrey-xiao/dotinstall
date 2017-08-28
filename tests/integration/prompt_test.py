@@ -1,30 +1,30 @@
 import builtins
 import io
 import os
-import unittest
-from unittest.mock import patch
+import mock
+import contextlib
 
 
 import dotinstall.dotinstall as dotinstall
 from tests.util import expand_path
 from tests.util import execute_main
 from tests.util import clean
+from tests.util import in_resource_path
 
+@contextlib.contextmanager
+def config():
+    with in_resource_path('./tests/resources/prompt') as temp_dir:
+        execute_main(False, True)
+        yield
 
-class PromptTest(unittest.TestCase):
+def test_prompt_y():
+    with mock.patch.object(builtins, 'input', return_value='y'):
+        with config():
+            assert os.path.exists(expand_path("./dist1/test1"))
+            assert os.path.exists(expand_path("./dist2/test2"))
 
-    def test_prompt_y(self):
-        with patch.object(builtins, 'input', return_value='y'):
-            execute_main('prompt', prompt=True)
-        self.assertTrue(os.path.exists(expand_path("~/test1/test1")))
-        self.assertTrue(os.path.exists(expand_path("~/test2/test2")))
-        clean("~/test1")
-        clean("~/test2")
-
-    def test_prompt_n(self):
-        with patch.object(builtins, 'input', return_value='n'):
-            execute_main('prompt', prompt=True)
-        self.assertFalse(os.path.exists(expand_path("~/test1/test1")))
-        self.assertFalse(os.path.exists(expand_path("~/test2/test2")))
-        clean("~/test1")
-        clean("~/test2")
+def test_prompt_n():
+    with mock.patch.object(builtins, 'input', return_value='n'):
+        with config():
+            assert not os.path.exists(expand_path("~/test1/test1"))
+            assert not os.path.exists(expand_path("~/test2/test2"))

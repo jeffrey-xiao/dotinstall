@@ -1,4 +1,5 @@
 import io
+import pytest
 import os
 import unittest
 
@@ -8,22 +9,16 @@ import dotinstall.util.path as path
 from tests.util import expand_path
 from tests.util import execute_main
 from tests.util import clean
+from tests.util import in_resource_path
 
+@pytest.fixture(autouse=True)
+def config():
+    with in_resource_path('./tests/resources/no_overwrite') as temp_dir:
+        execute_main(False, False)
+        yield
 
-class NoOverwriteTest(unittest.TestCase):
-
-    def test_no_overwrite(self):
-        with io.open(expand_path("~/test/1.txt")) as fin:
-            self.assertEqual(fin.read().strip(), "original 1")
-        with io.open(expand_path("~/test/2.txt")) as fin:
-            self.assertEqual(fin.read().strip(), "original 2")
-
-    @classmethod
-    def setUpClass(cls):
-        super(NoOverwriteTest, cls).setUpClass()
-        execute_main('no_overwrite')
-
-    @classmethod
-    def tearDownClass(cls):
-        super(NoOverwriteTest, cls).tearDownClass()
-        clean("~/test")
+def test_no_overwrite():
+    with io.open(expand_path("./dist/1.txt")) as fin:
+        assert fin.read().strip() == "original 1"
+    with io.open(expand_path("./dist/2.txt")) as fin:
+        assert fin.read().strip() == "original 2"

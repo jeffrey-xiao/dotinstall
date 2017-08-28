@@ -1,7 +1,7 @@
 test:
   prelink:
-    - "mkdir ~/test"
-    - "touch ~/test/1.txt"
-  link: "~/test"
+    - "mkdir ./dist"
+    - "touch ./dist/1.txt"
+  link: "~/dist"
   postlink:
-    - "touch ~/test/2.txt"
+    - "touch ./dist/2.txt"

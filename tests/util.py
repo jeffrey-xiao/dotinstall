@@ -1,5 +1,9 @@
+import pytest
+import mock
+import tempfile
 import os
 import shutil
+import contextlib
 
 
 import dotinstall.dotinstall as dotinstall
@@ -24,11 +28,25 @@ def clean(path):
         os.remove(path)
 
 
-def execute_main(test_name, update=False, prompt=False):
-    base_dir = os.path.join(expand_path('./tests/resources'), test_name)
+def execute_main(update=False, prompt=False):
     dotinstall.main({
-        'src': base_dir,
-        'conf': os.path.join(base_dir, 'config.yaml'),
+        'src': os.getcwd(),
+        'conf': os.path.join(os.getcwd(), 'config.yaml'),
         'update': update,
         'prompt': prompt,
     })
+
+
+@contextlib.contextmanager
+def in_resource_path(resource_path):
+    working_dir = os.getcwd()
+    temp_dir = tempfile.mkdtemp()
+
+    try:
+        new_working_dir = os.path.join(temp_dir, 'src')
+        shutil.copytree(os.path.abspath(resource_path), new_working_dir)
+        os.chdir(new_working_dir)
+        yield new_working_dir
+    finally:
+        os.chdir(working_dir)
+        clean(temp_dir)

@@ -1,4 +1,5 @@
 import io
+import pytest
 import os
 import unittest
 
@@ -8,22 +9,16 @@ import dotinstall.util.path as path
 from tests.util import expand_path
 from tests.util import execute_main
 from tests.util import clean
+from tests.util import in_resource_path
 
+@pytest.fixture(autouse=True)
+def config():
+    with in_resource_path('./tests/resources/no_scripts') as temp_dir:
+        execute_main(True, False)
+        yield
 
-class NoScriptsTest(unittest.TestCase):
+def test_no_prelink():
+    assert not os.path.exists(expand_path("~/test/1.txt"))
 
-    def test_no_prelink(self):
-        self.assertFalse(os.path.exists(expand_path("~/test/1.txt")))
-
-    def test_no_postlink(self):
-        self.assertFalse(os.path.exists(expand_path("~/test/2.txt")))
-
-    @classmethod
-    def setUpClass(cls):
-        super(NoScriptsTest, cls).setUpClass()
-        execute_main('no_scripts', update=True)
-
-    @classmethod
-    def tearDownClass(cls):
-        super(NoScriptsTest, cls).tearDownClass()
-        clean("~/test")
+def test_no_postlink():
+    assert not os.path.exists(expand_path("~/test/2.txt"))
