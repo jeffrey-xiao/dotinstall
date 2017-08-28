@@ -23,8 +23,11 @@ plugins = [
     Clean(),
 ]
 
+def main():
+    options = parser.parse_options(parser.read_options())
+    install(options)
 
-def main(options):
+def install(options):
     with io.open(options['conf'], "r") as f:
         packages = yaml.load(f)
 

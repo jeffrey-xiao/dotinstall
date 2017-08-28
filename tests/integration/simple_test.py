@@ -7,14 +7,14 @@ import pytest
 import dotinstall.dotinstall as dotinstall
 import dotinstall.util.path as path
 from tests.util import expand_path
-from tests.util import execute_main
+from tests.util import execute_install
 from tests.util import clean
 from tests.util import in_resource_path
 
 @pytest.fixture(autouse=True)
 def config():
     with in_resource_path('./tests/resources/simple') as temp_dir:
-        execute_main(False, False)
+        execute_install(False, False)
         yield
 
 

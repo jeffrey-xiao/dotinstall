@@ -28,8 +28,8 @@ def clean(path):
         os.remove(path)
 
 
-def execute_main(update=False, prompt=False):
-    dotinstall.main({
+def execute_install(update=False, prompt=False):
+    dotinstall.install({
         'src': os.getcwd(),
         'conf': os.path.join(os.getcwd(), 'config.yaml'),
         'update': update,

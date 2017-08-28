@@ -11,4 +11,9 @@ setup(
     download_url = 'https://github.com/jeffrey-xiao/dotinstall/archive/0.1.0.tar.gz',
     keywords = ['dotfiles', 'commandline'],
     classifiers = [],
+    entry_points = {
+        'console_scripts': [
+            'dotinstall=dotinstall.dotinstall:main'
+        ],
+    },
 )

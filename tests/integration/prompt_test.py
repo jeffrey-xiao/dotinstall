@@ -7,14 +7,14 @@ import contextlib
 
 import dotinstall.dotinstall as dotinstall
 from tests.util import expand_path
-from tests.util import execute_main
+from tests.util import execute_install
 from tests.util import clean
 from tests.util import in_resource_path
 
 @contextlib.contextmanager
 def config():
     with in_resource_path('./tests/resources/prompt') as temp_dir:
-        execute_main(False, True)
+        execute_install(False, True)
         yield
 
 def test_prompt_y():
