@@ -20,7 +20,7 @@ class EopkgInstaller(Installer):
         )
 
         grep_pipe = subprocess.Popen(
-            ['grep', '"\b{}\b"'.format(dependency)],
+            ['grep', '-e', r'\b{}\b'.format(dependency)],
             stdin=eopkg_pipe.stdout,
             stdout=subprocess.PIPE,
             stderr=subprocess.DEVNULL,

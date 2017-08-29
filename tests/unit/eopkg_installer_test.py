@@ -41,7 +41,7 @@ def test_installer_is_installed(popen_mock):
             stderr=subprocess.DEVNULL,
         ),
         mock.call(
-            ['grep', '\back\b'],
+            ['grep', '-e', r'\back\b'],
             stdin=pipe_1.stdout,
             stdout=subprocess.PIPE,
             stderr=subprocess.DEVNULL,
