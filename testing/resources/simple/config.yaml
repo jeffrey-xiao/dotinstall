@@ -1,9 +1,8 @@
 test:
   prelink:
     - "mkdir ./dist"
-    - "touch ./dist/1.txt"
-    - "echo 100 > ./djst/1.txt"
-    - "echo 2 > ./dist/2.txt"
+    - "echo 100 > ./dist/1.txt"
+    - "echo 200 > ./dist/2.txt"
     - "touch ./test/broken1.txt"
     - "touch ./test/broken2.txt"
   link:
@@ -14,4 +13,5 @@ test:
     - "rm ./other_dist/3.txt"
     - "rm ./test/broken1.txt"
     - "rm ./test/broken2.txt"
-    - "echo $(pwd)"
+    - "cat ./dist/1.txt"
+    - "ls ./dist"

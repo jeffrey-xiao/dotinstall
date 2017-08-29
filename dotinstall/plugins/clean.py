@@ -1,7 +1,5 @@
-import os
-import subprocess
 import glob
-
+import os
 
 import dotinstall.util.path as path
 from dotinstall.util.logger import Logger
@@ -22,3 +20,6 @@ class Clean(object):
                     for filename in glob.iglob(os.path.join(folder, pattern)):
                         if path.is_broken_symlink(filename):
                             path.clean(filename)
+                            Logger.info(
+                                "Removed broken symlink: '{}'".format(filename),
+                            )

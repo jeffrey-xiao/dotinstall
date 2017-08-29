@@ -1,28 +1,26 @@
 import subprocess
 
-
 from dotinstall.installer.installer import Installer
 
 
 class EopkgInstaller(Installer):
 
-    @staticmethod
-    def installer_exists():
+    def installer_exists(self):
         return subprocess.call(
             ['which', 'eopkg'],
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
         ) == 0
 
-    def _is_installed(self, dependency):  # pragma: no cover
+    def _is_installed(self, dependency):
         eopkg_pipe = subprocess.Popen(
-            ["eopkg", "li", "-i"],
+            ['eopkg', 'li', '-i'],
             stdout=subprocess.PIPE,
             stderr=subprocess.DEVNULL,
         )
 
         grep_pipe = subprocess.Popen(
-            ["grep", dependency],
+            ['grep', '\b{}\b'.format(dependency)],
             stdin=eopkg_pipe.stdout,
             stdout=subprocess.PIPE,
             stderr=subprocess.DEVNULL,
@@ -32,9 +30,9 @@ class EopkgInstaller(Installer):
 
         return grep_pipe.returncode == 0
 
-    def _install(self, dependency):  # pragma: no cover
+    def _install(self, dependency):
         return subprocess.call(
-            ["sudo", "eopkg", "it", "-y", dependency],
+            ['sudo', 'eopkg', 'it', '-y', dependency],
             stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
+            stderr=subprocess.PIPE,
         ) == 0

@@ -1,17 +1,12 @@
-import pytest
-import mock
-import tempfile
+import contextlib
 import os
 import shutil
-import contextlib
-
+import tempfile
 
 import dotinstall.dotinstall as dotinstall
 
 
 def expand_path(path):
-    if path is None:
-        return None
     path = os.path.expandvars(path)
     path = os.path.expanduser(path)
     path = os.path.abspath(path)

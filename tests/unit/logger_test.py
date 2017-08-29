@@ -1,43 +1,50 @@
-import io
-import sys
-import os
 import mock
 import pytest
-import unittest
 
-
-from dotinstall.util.logger import Logger
 from dotinstall.util.level import Level
+from dotinstall.util.logger import Logger
+
+
+@pytest.fixture
+def mock_log():
+    with mock.patch.object(Logger, 'log') as _mock:
+        yield _mock
 
 
 def test_log(mock_stdout):
     Logger.log(Level.HEADER, 'message')
-    mock_stdout.assert_called_with('{}{}{}'.format(
+    mock_stdout.assert_called_once_with('{}{}{}'.format(
         Level.HEADER,
         'message',
         Level.END,
     ))
 
-def test_normal(mock_logger):
+
+def test_normal(mock_log):
     Logger.normal('message')
-    mock_logger.log.assert_called_with(Level.NORMAL, 'message')
+    mock_log.assert_called_once_with(Level.NORMAL, 'message')
 
-def test_error(mock_logger):
+
+def test_error(mock_log):
     Logger.error('message')
-    mock_logger.log.assert_called_with(Level.ERROR, 'message')
+    mock_log.assert_called_once_with(Level.ERROR, 'message')
 
-def test_warning(mock_logger):
+
+def test_warning(mock_log):
     Logger.warning('message')
-    mock_logger.log.assert_called_with(Level.WARNING, 'message')
+    mock_log.assert_called_once_with(Level.WARNING, 'message')
 
-def test_success(mock_logger):
+
+def test_success(mock_log):
     Logger.success('message')
-    mock_logger.log.assert_called_with(Level.SUCCESS, 'message')
+    mock_log.assert_called_once_with(Level.SUCCESS, 'message')
 
-def test_info(mock_logger):
+
+def test_info(mock_log):
     Logger.info('message')
-    mock_logger.log.assert_called_with(Level.INFO, 'message')
+    mock_log.assert_called_once_with(Level.INFO, 'message')
 
-def test_header(mock_logger):
+
+def test_header(mock_log):
     Logger.header('message')
-    mock_logger.log.assert_called_with(Level.HEADER, 'message')
+    mock_log.assert_called_once_with(Level.HEADER, 'message')

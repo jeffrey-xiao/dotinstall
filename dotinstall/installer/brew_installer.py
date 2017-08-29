@@ -1,29 +1,27 @@
 import subprocess
 
-
 from dotinstall.installer.installer import Installer
 
 
 class BrewInstaller(Installer):
 
-    @staticmethod
-    def installer_exists():
+    def installer_exists(self):
         return subprocess.call(
             ['which', 'brew'],
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
         ) == 0
 
-    def _is_installed(self, dependency):  # pragma: no cover
+    def _is_installed(self, dependency):
         return subprocess.call(
-            ["brew", "ls", "--versions", "python"],
+            ['brew', 'ls', '--versions', dependency],
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
         ) == 0
 
-    def _install(self, dependency):  # pragma: no cover
+    def _install(self, dependency):
         return subprocess.call(
-            ["brew", "install", dependency],
+            ['brew', 'install', dependency],
             stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
+            stderr=subprocess.PIPE,
         ) == 0

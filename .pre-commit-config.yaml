@@ -1,0 +1,32 @@
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    sha: v0.9.2
+    hooks:
+    -   id: autopep8-wrapper
+        language_version: python3
+    -   id: check-yaml
+        files: \.yaml$
+        language_version: python3
+    -   id: double-quote-string-fixer
+        language_version: python3
+    -   id: end-of-file-fixer
+        language_version: python3
+    -   id: flake8
+        language_version: python2.7
+    -   id: name-tests-test
+        language_version: python3
+    -   id: requirements-txt-fixer
+        language_version: python3
+    -   id: sort-simple-yaml
+        language_version: python3
+    -   id: trailing-whitespace
+        language_version: python3
+-   repo: https://github.com/asottile/reorder_python_imports
+    sha: v0.3.5
+    hooks:
+    -   id: reorder-python-imports
+    language_version: python3
+-   repo: https://github.com/asottile/add-trailing-comma
+    sha: v0.6.4
+    hooks:
+    -   id: add-trailing-comma
+    language_version: python3

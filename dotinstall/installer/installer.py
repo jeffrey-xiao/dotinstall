@@ -1,27 +1,23 @@
-import subprocess
-
-
 from dotinstall.util.logger import Logger
 
 
 class Installer(object):
 
-    @staticmethod
-    def installer_exists():
+    def installer_exists(self):
         raise NotImplementedError
 
-    def install(self, dependency):  # pragma: no cover
+    def install(self, dependency):
         if self._is_installed(dependency):
             Logger.info("'{}' is already installed.\n".format(
-                dependency
+                dependency,
             ))
         elif self._install(dependency):
             Logger.success("'{}' has been successfully installed.\n".format(
-                dependency
+                dependency,
             ))
         else:
             Logger.error("'{}' could not be installed.\n".format(
-                dependency
+                dependency,
             ))
 
     def _is_installed(self, dependency):

@@ -8,4 +8,4 @@ class Level(object):
     SUCCESS = Format.GREEN
     INFO = Format.BLUE
     END = Format.RESET
-    NORMAL = ""
+    NORMAL = ''
