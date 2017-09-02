@@ -1,5 +1,5 @@
 # DOTINSTALL
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Build Status](https://travis-ci.org/travis-ci/travis-web.svg?branch=master)](https://travis-ci.org/travis-ci/travis-web) [![Coverage Status](https://coveralls.io/repos/github/jeffrey-xiao/dotinstall/badge.svg?branch=master)](https://coveralls.io/github/jeffrey-xiao/dotinstall?branch=master)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Build Status](https://travis-ci.org/travis-ci/travis-web.svg?branch=master)](https://travis-ci.org/travis-ci/travis-web) [![Coverage Status](https://coveralls.io/repos/github/jeffrey-xiao/dotinstall/badge.svg?branch=master)](https://coveralls.io/github/jeffrey-xiao/dotinstall?branch=master) [![PyPI version](https://badge.fury.io/py/dotinstall.svg)](https://badge.fury.io/py/dotinstall)
 
 Dotinstall makes it easier to completely setup a fresh install. By grouping your configs into 'packages',
 you can use dotinstall to quickly symlink your files, install dependencies, and setup your system. You might have a particularly
