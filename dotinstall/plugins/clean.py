@@ -21,5 +21,5 @@ class Clean(object):
                         if path.is_broken_symlink(filename):
                             path.clean(filename)
                             Logger.info(
-                                "Removed broken symlink: '{}'".format(filename),
+                                "Removed broken symlink: '{}'\n".format(filename),
                             )
