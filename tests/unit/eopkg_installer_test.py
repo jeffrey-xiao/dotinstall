@@ -28,28 +28,13 @@ def test_installer_exists(call_mock):
 
 
 def test_installer_is_installed(popen_mock):
-    pipe_1 = mock.Mock()
-    pipe_2 = mock.Mock()
-    popen_mock.side_effect = (pipe_1, pipe_2)
-
+    popen_mock.return_value.communicate.return_value = (b'', b'')
     EopkgInstaller()._is_installed('ack')
-
-    expected_popen_calls = [
-        mock.call(
-            ['eopkg', 'li', '-i'],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.DEVNULL,
-        ),
-        mock.call(
-            ['grep', '-e', r'\back\b'],
-            stdin=pipe_1.stdout,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.DEVNULL,
-        ),
-    ]
-
-    popen_mock.assert_has_calls(expected_popen_calls)
-    pipe_2.communicate.assert_called_once()
+    popen_mock.assert_called_once_with(
+        ['sudo', 'eopkg', 'it', '-n', 'ack'],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.PIPE,
+    )
 
 
 def test_installer_install(call_mock):

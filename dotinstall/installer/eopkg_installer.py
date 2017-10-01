@@ -14,21 +14,14 @@ class EopkgInstaller(Installer):
 
     def _is_installed(self, dependency):
         eopkg_pipe = subprocess.Popen(
-            ['eopkg', 'li', '-i'],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.DEVNULL,
+            ['sudo', 'eopkg', 'it', '-n', dependency],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.PIPE,
         )
 
-        grep_pipe = subprocess.Popen(
-            ['grep', '-e', r'\b{}\b'.format(dependency)],
-            stdin=eopkg_pipe.stdout,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.DEVNULL,
-        )
+        _, error = eopkg_pipe.communicate()
 
-        grep_pipe.communicate()
-
-        return grep_pipe.returncode == 0
+        return 'already installed' in error.decode('utf-8')
 
     def _install(self, dependency):
         return subprocess.call(
