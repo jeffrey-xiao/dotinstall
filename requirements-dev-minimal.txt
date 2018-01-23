@@ -1,5 +1,4 @@
-coveralls
+codecov
 mock
 pre-commit
 pytest
-python-coveralls
