@@ -1,15 +1,24 @@
 language: python
-python:
-  - "3.4"
-  - "3.5"
-  - "3.6"
-  - "nightly"
-install:
-  - "pip3 install pep8"
-  - "pip3 install tox-travis"
-  - "pip3 install -rrequirements-dev.txt"
-script:
-  - "tox"
-after_success:
-  - "codecov"
+
 sudo: required
+
+python:
+  - 3.4
+  - 3.5
+  - 3.6
+  - nightly
+
+matrix:
+  allow_failures:
+    - python: nightly
+
+install:
+  - pip3 install pep8
+  - pip3 install tox-travis
+  - pip3 install -rrequirements-dev.txt
+
+script:
+  - tox
+
+after_success:
+  - codecov
