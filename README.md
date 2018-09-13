@@ -1,9 +1,9 @@
-# DOTINSTALL
+# dotinstall
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Build Status](https://travis-ci.org/travis-ci/travis-web.svg?branch=master)](https://travis-ci.org/travis-ci/travis-web) [![codecov](https://codecov.io/gh/jeffrey-xiao/dotinstall/branch/master/graph/badge.svg)](https://codecov.io/gh/jeffrey-xiao/dotinstall) [![PyPI version](https://badge.fury.io/py/dotinstall.svg)](https://badge.fury.io/py/dotinstall)
+[![Build Status](https://travis-ci.org/travis-ci/travis-web.svg?branch=master)](https://travis-ci.org/travis-ci/travis-web) [![codecov](https://codecov.io/gh/jeffrey-xiao/dotinstall/branch/master/graph/badge.svg)](https://codecov.io/gh/jeffrey-xiao/dotinstall) [![PyPI version](https://badge.fury.io/py/dotinstall.svg)](https://badge.fury.io/py/dotinstall)
 
-Dotinstall makes it easier to completely setup a fresh install. By grouping your configs into
-'packages', you can use dotinstall to quickly symlink your files, install dependencies, and setup
+`dotinstall` makes it easier to completely setup a fresh install. By grouping your configs into
+'packages', you can use `dotinstall` to quickly symlink your files, install dependencies, and setup
 your system. You might have a particularly hard time setting up your windows manager. For example, I
 use i3-gaps and i3blocks-gaps on Ubuntu so I have to install those from source. By having a package
 defined as i3, I can associate dependencies and scripts to run to setup my windows manager.
@@ -15,7 +15,6 @@ Features:
  - Prelink, and postlink scripts to run before symlinking and dependency installation.
  - Easy configuration setup using yaml.
 
-
 ## Installation
 
 ```
@@ -25,11 +24,9 @@ pip3 install dotinstall
 dotinstall
 ```
 
-
 ## Usage
 
 Run ```dotinstall -h``` for more details.
-
 
 ## Config File
 
@@ -57,12 +54,10 @@ The order of the commands will be: prelink -> dependencies -> link -> postlink -
 
 Each submodule will be installed in the order that it is listed in the config file.
 
-
 ## Example
 
 Please see my personal dotfile
 [config](https://github.com/jeffrey-xiao/dotfiles/blob/master/config.yaml).
-
 
 ## Contributing
 
@@ -71,3 +66,10 @@ class with a `execute` command.
 
 Additionally, only the `apt-get`, `eopkg` and `brew` package managers are integrated into
 `dotinstall`. Feel free to add other package managers.
+
+## License
+
+`dotinstall` is dual-licensed under the terms of either the MIT license or the Apache License
+(Version 2.0).
+
+See [LICENSE-APACHE](LICENSE-APACHE) and [LICENSE-MIT](LICENSE-MIT) for more details.

@@ -1,6 +1,8 @@
 *.pyc
-.coverage
-venv
-.tox/
 .cache/
+.coverage
+.tox/
+build/
+dist/
 dotinstall.egg-info/
+venv
