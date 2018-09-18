@@ -1,6 +1,9 @@
 # dotinstall
 
-[![Build Status](https://travis-ci.org/travis-ci/travis-web.svg?branch=master)](https://travis-ci.org/travis-ci/travis-web) [![codecov](https://codecov.io/gh/jeffrey-xiao/dotinstall/branch/master/graph/badge.svg)](https://codecov.io/gh/jeffrey-xiao/dotinstall) [![PyPI version](https://badge.fury.io/py/dotinstall.svg)](https://badge.fury.io/py/dotinstall)
+[![Build Status](https://travis-ci.org/travis-ci/travis-web.svg?branch=master)](https://travis-ci.org/travis-ci/travis-web) [![codecov](https://codecov.io/gh/jeffrey-xiao/dotinstall/branch/master/graph/badge.svg)](https://codecov.io/gh/jeffrey-xiao/dotinstall)
+[![PyPI version](https://badge.fury.io/py/dotinstall.svg)](https://badge.fury.io/py/dotinstall)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 `dotinstall` makes it easier to completely setup a fresh install. By grouping your configs into
 'packages', you can use `dotinstall` to quickly symlink your files, install dependencies, and setup
@@ -69,7 +72,7 @@ Additionally, only the `apt-get`, `eopkg` and `brew` package managers are integr
 
 ## License
 
-`dotinstall` is dual-licensed under the terms of either the MIT license or the Apache License
+`dotinstall` is dual-licensed under the terms of either the MIT License or the Apache License
 (Version 2.0).
 
 See [LICENSE-APACHE](LICENSE-APACHE) and [LICENSE-MIT](LICENSE-MIT) for more details.
