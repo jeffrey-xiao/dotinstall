@@ -15,9 +15,7 @@ Features:
  - Easy integration into existing dotfiles by installing as submodules.
  - Association of dependencies with packages.
  - Globbing for specifying targets to symlink in each package.
- - Prelink, and postlink scripts to run before symlinking and dependency installation.
- - Easy configuration setup using yaml.
-
+ - Prelink, and postlink scripts to run before symlinking and dependency installation. - Easy configuration setup using yaml.
 ## Installation
 
 ```
@@ -67,8 +65,13 @@ Please see my personal dotfile
 Please fork the repository and submit a PR. New plugins are very easy to create, by adding a new
 class with a `execute` command.
 
-Additionally, only the `apt-get`, `eopkg` and `brew` package managers are integrated into
-`dotinstall`. Feel free to add other package managers.
+Currently implemented package managers are:
+- `apt-get`
+- `brew`
+- `pacman`
+- `eopkg`
+
+Feel free to add other package managers.
 
 ## License
 
