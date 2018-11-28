@@ -29,17 +29,17 @@ dotinstall
 
 ## Usage
 
-Run ```dotinstall -h``` for more details.
+Run `dotinstall -h` for more details.
 
 ## Config File
 
-The config file (default ```config.yaml```) has the following possible entries.
+The config file (default `config.yaml`) has the following possible entries.
 
 **link**: If specified as an item, it will link all the items in the package to the specified
 location. If specified as a list, it will link the specific items to their specified location. Note
-that each item will at most be linked once. For example, if you have three files ```1.txt```,
-```2.txt```, ```3.txt``` and you first link ```1.txt```, it will only link ```2.txt``` and
-```3.txt``` when you later try to link ```*.txt```.
+that each item will at most be linked once. For example, if you have three files `1.txt`,
+`2.txt`, `3.txt` and you first link `1.txt`, it will only link `2.txt` and
+`3.txt` when you later try to link `*.txt`.
 
 **prelink**: A list of scripts that will run before dependency installation and linking.
 
@@ -67,8 +67,13 @@ Please see my personal dotfile
 Please fork the repository and submit a PR. New plugins are very easy to create, by adding a new
 class with a `execute` command.
 
-Additionally, only the `apt-get`, `eopkg` and `brew` package managers are integrated into
-`dotinstall`. Feel free to add other package managers.
+Currently implemented package managers are:
+- `apt-get`
+- `brew`
+- `pacman`
+- `eopkg`
+
+Feel free to add other package managers.
 
 ## License
 
