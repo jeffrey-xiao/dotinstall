@@ -99,10 +99,15 @@ def test_parse_data_multiple_links():
     ret = parser.parse_data(
         {
             'link': [
-                {'a': 'link_a'},
-                {'b': 'link_b'},
+                {
+                    'a': 'link_a',
+                },
+                {
+                    'b': 'link_b',
+                },
             ],
-        }, 'test_package',
+        },
+        'test_package',
     )
     assert 'linkLocations' in ret
     assert len(ret['linkLocations']) == 2
@@ -119,7 +124,8 @@ def test_parse_data_attributes():
             'postlink': 'postlink',
             'dependencies': 'dependencies',
             'clean': 'clean',
-        }, 'test_package',
+        },
+        'test_package',
     )
 
     assert 'overwrite' in ret
@@ -138,7 +144,8 @@ def test_parse_data_no_attributes():
     ret = parser.parse_data(
         {
             'link': 'test',
-        }, 'test_package',
+        },
+        'test_package',
     )
 
     assert 'overwrite' in ret
@@ -157,7 +164,8 @@ def test_parse_data_package_name():
     ret = parser.parse_data(
         {
             'link': 'test',
-        }, 'test_package',
+        },
+        'test_package',
     )
 
     assert 'package' in ret
