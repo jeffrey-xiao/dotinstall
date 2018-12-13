@@ -6,23 +6,33 @@ from dotinstall.util.logger import Logger
 
 
 def read_options(argv=None):
-    parser = argparse.ArgumentParser(
-        description='Installation script for dotfiles.',
-    )
+    parser = argparse.ArgumentParser(description='Installation script for dotfiles.')
     parser.add_argument(
-        '-s', '--src', dest='src', metavar='dir',
+        '-s',
+        '--src',
+        dest='src',
+        metavar='dir',
         help='root directory of dotfiles',
     )
     parser.add_argument(
-        '-c', '--conf', dest='conf', metavar='file',
+        '-c',
+        '--conf',
+        dest='conf',
+        metavar='file',
         help='config file for symlinking and installing',
     )
     parser.add_argument(
-        '-p', '--prompt', dest='prompt', action='store_true',
+        '-p',
+        '--prompt',
+        dest='prompt',
+        action='store_true',
         help='prompt user before installing package',
     )
     parser.add_argument(
-        '-u', '--update', dest='update', action='store_true',
+        '-u',
+        '--update',
+        dest='update',
+        action='store_true',
         help='only symlinks files',
     )
 
@@ -66,8 +76,12 @@ def parse_data(package, package_name):
         ret['linkLocations'] = package['link']
     else:
         ret['linkLocations'] = [
-            {'*': package['link']},
-            {'.*': package['link']},
+            {
+                '*': package['link'],
+            },
+            {
+                '.*': package['link'],
+            },
         ]
 
     if 'overwrite' in package:

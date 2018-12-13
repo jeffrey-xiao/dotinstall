@@ -11,7 +11,6 @@ from dotinstall.plugins.postlink import Postlink
 from dotinstall.plugins.prelink import Prelink
 from dotinstall.util.logger import Logger
 
-
 pkg_manager = get_system_installer()
 plugins = [
     Prelink(),
