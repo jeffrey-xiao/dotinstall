@@ -12,11 +12,12 @@ use i3-gaps and i3blocks-gaps on Ubuntu so I have to install those from source. 
 defined as i3, I can associate dependencies and scripts to run to setup my windows manager.
 
 Features:
- - Easy integration into existing dotfiles by installing as submodules.
- - Association of dependencies with packages.
- - Globbing for specifying targets to symlink in each package.
- - Prelink, and postlink scripts to run before symlinking and dependency installation.
- - Easy configuration setup using yaml.
+
+- Easy integration into existing dotfiles by installing as submodules.
+- Association of dependencies with packages.
+- Globbing for specifying targets to symlink in each package.
+- Prelink, and postlink scripts to run before symlinking and dependency installation.
+- Easy configuration setup using yaml.
 
 ## Installation
 
@@ -68,6 +69,7 @@ Please fork the repository and submit a PR. New plugins are very easy to create,
 class with a `execute` command.
 
 Currently implemented package managers are:
+
 - `apt-get`
 - `brew`
 - `pacman`
