@@ -1,5 +1,5 @@
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    sha: v0.9.2
+    rev: v0.9.2
     hooks:
     -   id: autopep8-wrapper
         language_version: python3
@@ -21,16 +21,16 @@
     -   id: trailing-whitespace
         language_version: python3
 -   repo: https://github.com/asottile/reorder_python_imports
-    sha: v0.3.5
+    rev: v0.3.5
     hooks:
     -   id: reorder-python-imports
-    language_version: python3
+        language_version: python3
 -   repo: https://github.com/asottile/add-trailing-comma
-    sha: v0.6.4
+    rev: v0.6.4
     hooks:
     -   id: add-trailing-comma
-    language_version: python3
+        language_version: python3
 -   repo: https://github.com/pre-commit/mirrors-yapf
-    sha: v0.25.0
+    rev: v0.25.0
     hooks:
     -   id: yapf

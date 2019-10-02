@@ -20,4 +20,4 @@ class Clean(object):
                     for filename in glob.iglob(os.path.join(folder, pattern)):
                         if path.is_broken_symlink(filename):
                             path.clean(filename)
-                            Logger.info("Removed broken symlink: '{}'\n".format(filename))
+                            Logger.info("Removed broken symlink: '{}'.\n".format(filename))

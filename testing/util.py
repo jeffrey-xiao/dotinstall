@@ -23,12 +23,13 @@ def clean(path):
         os.remove(path)
 
 
-def execute_install(update=False, prompt=False):
+def execute_install(update=False, prompt=False, packages=[]):
     dotinstall.install({
         'src': os.getcwd(),
         'conf': os.path.join(os.getcwd(), 'config.yaml'),
         'update': update,
         'prompt': prompt,
+        'packages': packages,
     })
 
 

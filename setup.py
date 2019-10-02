@@ -9,7 +9,7 @@ setup(
         'dotinstall.util',
     ],
     install_requires=[
-        'PyYAML',
+        'PyYAML>=5.1',
     ],
     version='0.9.0',
     description='Command-line tool to help install and setup your dotfiles.',

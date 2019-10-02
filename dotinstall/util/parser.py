@@ -35,6 +35,10 @@ def read_options(argv=None):
         action='store_true',
         help='only symlinks files',
     )
+    parser.add_argument(
+        'packages',
+        nargs='*',
+    )
 
     return parser.parse_args(argv)
 
@@ -48,12 +52,14 @@ def parse_options(args):
 
     update = args.update
     prompt = args.prompt
+    packages = args.packages
 
     return {
         'src': src,
         'conf': conf,
         'update': update,
         'prompt': prompt,
+        'packages': packages,
     }
 
 
