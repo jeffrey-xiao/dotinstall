@@ -3,9 +3,9 @@ language: python
 sudo: required
 
 python:
-  - 3.4
   - 3.5
   - 3.6
+  - 3.7
   - nightly
 
 matrix:
@@ -14,7 +14,7 @@ matrix:
 
 install:
   - pip3 install pep8
-  - pip3 install tox-travis
+  - pip3 install tox-travis>=0.11
   - pip3 install -rrequirements-dev.txt
 
 script:
