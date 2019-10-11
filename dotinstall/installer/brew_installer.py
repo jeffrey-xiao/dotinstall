@@ -4,7 +4,6 @@ from dotinstall.installer.installer import Installer
 
 
 class BrewInstaller(Installer):
-
     def installer_exists(self):
         return subprocess.call(
             ['which', 'brew'],

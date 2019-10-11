@@ -4,7 +4,6 @@ from dotinstall.installer.installer import Installer
 
 
 class AptInstaller(Installer):
-
     def installer_exists(self):
         return subprocess.call(
             ['which', 'apt-get'],

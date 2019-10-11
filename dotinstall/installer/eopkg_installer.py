@@ -4,7 +4,6 @@ from dotinstall.installer.installer import Installer
 
 
 class EopkgInstaller(Installer):
-
     def installer_exists(self):
         return subprocess.call(
             ['which', 'eopkg'],

@@ -6,7 +6,6 @@ from dotinstall.util.logger import Logger
 
 
 class Clean(object):
-
     def execute(self, options, data, pkg_manager):
         if data['clean']:
             folders = set()

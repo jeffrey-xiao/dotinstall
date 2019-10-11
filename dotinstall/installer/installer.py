@@ -2,7 +2,6 @@ from dotinstall.util.logger import Logger
 
 
 class Installer(object):
-
     def installer_exists(self):
         raise NotImplementedError
 

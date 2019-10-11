@@ -6,7 +6,6 @@ import dotinstall.util.path as path
 
 
 class Link(object):
-
     def execute(self, options, data, pkg_manager):
         symlinked_files = set()
         for link_location in data['linkLocations']:
