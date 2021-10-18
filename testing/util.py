@@ -24,13 +24,15 @@ def clean(path):
 
 
 def execute_install(update=False, prompt=False, packages=[]):
-    dotinstall.install({
-        'src': os.getcwd(),
-        'conf': os.path.join(os.getcwd(), 'config.yaml'),
-        'update': update,
-        'prompt': prompt,
-        'packages': packages,
-    })
+    dotinstall.install(
+        {
+            "src": os.getcwd(),
+            "conf": os.path.join(os.getcwd(), "config.yaml"),
+            "update": update,
+            "prompt": prompt,
+            "packages": packages,
+        },
+    )
 
 
 @contextlib.contextmanager
@@ -39,7 +41,7 @@ def in_resource_path(resource_path):
     temp_dir = tempfile.mkdtemp()
 
     try:
-        new_working_dir = os.path.join(temp_dir, 'src')
+        new_working_dir = os.path.join(temp_dir, "src")
         shutil.copytree(os.path.abspath(resource_path), new_working_dir)
         os.chdir(new_working_dir)
         yield new_working_dir

@@ -6,7 +6,7 @@ from dotinstall.util.level import Level
 class Logger(object):
     @classmethod
     def log(cls, level, message):
-        sys.stdout.write('{}{}{}'.format(level, message, Level.END))
+        sys.stdout.write("{}{}{}".format(level, message, Level.END))
 
     @classmethod
     def normal(cls, message):

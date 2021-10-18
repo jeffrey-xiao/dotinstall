@@ -1,17 +1,12 @@
+repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v0.9.2
+    rev: v4.0.1
     hooks:
-    -   id: autopep8-wrapper
-        language_version: python3
     -   id: check-yaml
         files: \.yaml$
         language_version: python3
-    -   id: double-quote-string-fixer
-        language_version: python3
     -   id: end-of-file-fixer
         language_version: python3
-    -   id: flake8
-        language_version: python2.7
     -   id: name-tests-test
         language_version: python3
     -   id: requirements-txt-fixer
@@ -21,16 +16,25 @@
     -   id: trailing-whitespace
         language_version: python3
 -   repo: https://github.com/asottile/reorder_python_imports
-    rev: v0.3.5
+    rev: v2.6.0
     hooks:
     -   id: reorder-python-imports
         language_version: python3
 -   repo: https://github.com/asottile/add-trailing-comma
-    rev: v0.6.4
+    rev: v2.1.0
     hooks:
     -   id: add-trailing-comma
         language_version: python3
--   repo: https://github.com/pre-commit/mirrors-yapf
-    rev: v0.25.0
+-   repo: https://github.com/psf/black
+    rev: 21.9b0
     hooks:
-    -   id: yapf
+    -   id: black
+        language_version: python3.9
+-   repo: https://github.com/pre-commit/mirrors-autopep8
+    rev: v1.5.7
+    hooks:
+    -   id: autopep8
+-   repo: https://github.com/PyCQA/flake8
+    rev: 4.0.1
+    hooks:
+    -   id: flake8

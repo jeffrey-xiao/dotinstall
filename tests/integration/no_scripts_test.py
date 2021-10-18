@@ -9,14 +9,14 @@ from testing.util import in_resource_path
 
 @pytest.fixture(autouse=True)
 def config():
-    with in_resource_path('./testing/resources/no_scripts'):
+    with in_resource_path("./testing/resources/no_scripts"):
         execute_install(True, False)
         yield
 
 
 def test_no_prelink():
-    assert not os.path.exists(expand_path('./dist/1.txt'))
+    assert not os.path.exists(expand_path("./dist/1.txt"))
 
 
 def test_no_postlink():
-    assert not os.path.exists(expand_path('./dist/2.txt'))
+    assert not os.path.exists(expand_path("./dist/2.txt"))

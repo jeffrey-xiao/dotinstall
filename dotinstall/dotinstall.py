@@ -27,23 +27,25 @@ def main():  # pragma: no cover
 
 
 def install(options):
-    with io.open(options['conf'], 'r') as f:
+    with io.open(options["conf"], "r") as f:
         packages = yaml.full_load(f)
 
-    for package in options['packages'] or packages.keys():
+    for package in options["packages"] or packages.keys():
         if package not in packages.keys():
-            Logger.warning('\nPackage {} does not exist.\n'.format(package))
+            Logger.warning("\nPackage {} does not exist.\n".format(package))
             continue
-        if options['prompt']:
-            Logger.header('\nInstall {} (Y/n)? '.format(package))
+        if options["prompt"]:
+            Logger.header("\nInstall {} (Y/n)? ".format(package))
             resp = input().strip().lower()
-            while resp != 'n' and resp != 'y' and resp != '':
-                Logger.header('\nInvalid response \'{}\'. Install {} (Y/n)? '.format(resp, package))
+            while resp != "n" and resp != "y" and resp != "":
+                Logger.header(
+                    "\nInvalid response '{}'. Install {} (Y/n)? ".format(resp, package),
+                )
                 resp = input().strip().lower()
-            if resp == 'n':
+            if resp == "n":
                 continue
         else:
-            Logger.header('\nInstalling {}.\n'.format(package))
+            Logger.header("\nInstalling {}.\n".format(package))
 
         data = parser.parse_data(packages[package], package)
         for plugin in plugins:
